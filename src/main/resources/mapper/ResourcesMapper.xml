@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ebis.adminbackend.dao.ResourcesMapper" >
+  <resultMap id="BaseResultMap" type="com.ebis.adminbackend.po.Resources" >
+    <id column="resourceid" property="resourceid" jdbcType="VARCHAR" />
+    <result column="resourcename" property="resourcename" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="VARCHAR" />
+    <result column="isend" property="isend" jdbcType="INTEGER" />
+    <result column="catagory" property="catagory" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="iconCls" property="iconcls" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    resourceid, resourcename, addr, parentid, isend, catagory, state, iconCls, sort
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ebis.adminbackend.po.ResourcesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from resources
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from resources
+    where resourceid = #{resourceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from resources
+    where resourceid = #{resourceid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ebis.adminbackend.po.ResourcesExample" >
+    delete from resources
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ebis.adminbackend.po.Resources" >
+    insert into resources (resourceid, resourcename, addr, 
+      parentid, isend, catagory, 
+      state, iconCls, sort
+      )
+    values (#{resourceid,jdbcType=VARCHAR}, #{resourcename,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=VARCHAR}, #{isend,jdbcType=INTEGER}, #{catagory,jdbcType=INTEGER}, 
+      #{state,jdbcType=VARCHAR}, #{iconcls,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ebis.adminbackend.po.Resources" >
+    insert into resources
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceid != null" >
+        resourceid,
+      </if>
+      <if test="resourcename != null" >
+        resourcename,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="parentid != null" >
+        parentid,
+      </if>
+      <if test="isend != null" >
+        isend,
+      </if>
+      <if test="catagory != null" >
+        catagory,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="iconcls != null" >
+        iconCls,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceid != null" >
+        #{resourceid,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcename != null" >
+        #{resourcename,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="isend != null" >
+        #{isend,jdbcType=INTEGER},
+      </if>
+      <if test="catagory != null" >
+        #{catagory,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="iconcls != null" >
+        #{iconcls,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ebis.adminbackend.po.ResourcesExample" resultType="java.lang.Integer" >
+    select count(*) from resources
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update resources
+    <set >
+      <if test="record.resourceid != null" >
+        resourceid = #{record.resourceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourcename != null" >
+        resourcename = #{record.resourcename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr != null" >
+        addr = #{record.addr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentid != null" >
+        parentid = #{record.parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isend != null" >
+        isend = #{record.isend,jdbcType=INTEGER},
+      </if>
+      <if test="record.catagory != null" >
+        catagory = #{record.catagory,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iconcls != null" >
+        iconCls = #{record.iconcls,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update resources
+    set resourceid = #{record.resourceid,jdbcType=VARCHAR},
+      resourcename = #{record.resourcename,jdbcType=VARCHAR},
+      addr = #{record.addr,jdbcType=VARCHAR},
+      parentid = #{record.parentid,jdbcType=VARCHAR},
+      isend = #{record.isend,jdbcType=INTEGER},
+      catagory = #{record.catagory,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=VARCHAR},
+      iconCls = #{record.iconcls,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ebis.adminbackend.po.Resources" >
+    update resources
+    <set >
+      <if test="resourcename != null" >
+        resourcename = #{resourcename,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentid = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="isend != null" >
+        isend = #{isend,jdbcType=INTEGER},
+      </if>
+      <if test="catagory != null" >
+        catagory = #{catagory,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="iconcls != null" >
+        iconCls = #{iconcls,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where resourceid = #{resourceid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ebis.adminbackend.po.Resources" >
+    update resources
+    set resourcename = #{resourcename,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=VARCHAR},
+      isend = #{isend,jdbcType=INTEGER},
+      catagory = #{catagory,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR},
+      iconCls = #{iconcls,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER}
+    where resourceid = #{resourceid,jdbcType=VARCHAR}
+  </update>
+</mapper>

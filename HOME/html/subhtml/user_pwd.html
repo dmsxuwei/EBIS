@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<h3 class="vipright-title">修改资料</h3>
+		<table class="grinfo">
+			<tbody>
+				<tr>
+					<th>原手机号：</th>
+					<td> <strong>18521032517</strong></td>
+				</tr>
+				<tr>
+					<th>账号：</th>
+					<td> <input class="inp inw" type="text" id="new_username" maxlength="15" placeholder="不少于3位中英文即可" value="" onkeyup="return only_py_num(this)">
+
+					</td>
+				</tr>
+				<tr>
+					<th>新密码：</th>
+					<td>
+						<input class="inp inw" type="password" id="new_password" placeholder="不少于6位">
+					</td>
+				</tr>
+				<tr>
+					<th>重复新密码：</th>
+					<td>
+						<input class="inp inw" type="password" id="new_password1" placeholder="不少于6位">
+					</td>
+				</tr>
+				<tr>
+					<th>&nbsp;</th>
+					<td colspan="2">
+						<label class="butt" id="butt">
+        <div class="member_mod_buttom" onclick="sub_username()">完成修改</div>
+        </label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="Author" contect="http://www.webqin.net">
+		<title>EBIS</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<link type="text/css" href="css/css.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/js.js"></script>
+
+		<link href="slide/css/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="slide/js/jquery.js"></script>
+		<script type="text/javascript" src="slide/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var base_url = 'http://127.0.0.1:8091/'; //服务的地址
+				var url_GetMainObject = 'merchant/getMerchantsForweb';
+				var pic_path = 'http://127.0.0.1:8020/HOME/pic/'; //图片的地址   这里和WEB放一个地址 
+				//导航定位
+				$("#merchant_class").attr("style", "display:none;");
+	
+
+				$("#home").click(function() {
+					$("#bodycontent").load("html/home.html");
+				});
+				
+				$("#taobao").click(function() {
+					$("#bodycontent").load("html/taobao.html");
+				});
+				$("#jingdong").click(function() {
+					$("#bodycontent").load("html/jingdong.html");
+				});
+				$("#pingduoduo").click(function() {
+					$("#bodycontent").load("html/pingduoduo.html");
+				});
+
+				$("#duanshiping").click(function() {
+					$("#bodycontent").load("html/duanshiping.html");
+				});
+
+				$("#login").click(function() {
+					$("#bodycontent").load("html/login.html");
+				});
+				$("#reg").click(function() {
+					$("#bodycontent").load("html/reg.html");
+				});
+
+				$("#account").click(function() {
+					$("#bodycontent").load("html/account.html");
+				});
+				$("#about").click(function() {
+					$("#bodycontent").load("html/about.html");
+				});
+
+				
+				
+				$("#home").click();
+
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div class="header">
+			<div class="width1190">
+				<div class="fl">您好，欢迎来到刷单网！</div>
+				<div class="fr">
+					<a id="login">登录</a> |
+					<a id="reg">注册</a> |
+					<a href="javascript:;" onclick="AddFavorite(window.location,document.title)">加入收藏</a> |
+					<a href="javascript:;" onclick="SetHome(this,window.location)">设为首页</a>
+				</div>
+				<div class="clears"></div>
+			</div>
+			<!--width1190/-->
+		</div>
+		<!--header/-->
+		<div class="logo-phone">
+			<div class="width1190">
+				<h1 class="logo"><a href="index.html"><img src="images/logo.png" width="131" height="75" /></a></h1>
+				<div class="phones"><strong>021-63179891</strong></div>
+				<div class="clears"></div>
+			</div>
+			<!--width1190/-->
+		</div>
+		<!--logo-phone/-->
+		<div class="list-nav">
+			<div class="width1190">
+				<div class="list">
+					<h3 id="merchant_button">商家分类</h3>
+					<div id="merchant_class" class="list-list">
+						<dl>
+							<dt><a href="javascript:;">淘宝刷单</a></dt>
+							<dd>
+								<a href="javascript:;">爆款打造</a>
+								<a href="javascript:;">流量优化</a>
+								<a href="javascript:;">运营干货</a>
+								<a href="javascript:;">社区</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href="pro_zu.html">京东刷单</a></dt>
+							<dd>
+								<a href="pro_zu.html">爆款打造</a>
+								<a href="pro_zu.html">流量优化</a>
+								<a href="pro_zu.html">社区</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href="pro_xin.html">拼多多刷单</a></dt>
+							<dd>
+								<a href="pro_xin.html">流量优化</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href="pro_er.html">短视频</a></dt>
+							<dd>
+								<a href="pro_er.html">爆款打造</a>
+								<a href="pro_er.html">流量优化</a>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!--list/-->
+				<ul class="nav">
+					<li>
+						<a id="home">首页</a>
+					</li>
+					<li>
+						<a id="taobao">淘宝专区</a>
+						<!--href="pro_zu.html"-->
+					</li>
+					<li>
+						<a id="jingdong">京东专区</a>
+					</li>
+					<li>
+						<a id="pingduoduo">拼多多专区</a>
+					</li>
+					<li>
+						<a id="duanshiping">短视频专区</a>
+					</li>
+					<li>
+						<a id="account" ">个人中心</a>
+					</li>
+					<!--<li class="zhiding ">
+						<a href="javascript:; ">指定商家</a>
+					</li>-->
+					<li>
+						<a>社区</a>
+					</li>
+<!--					<li>
+						<a id="about ">关于我们</a>
+					</li>-->
+					<!--<div class="clears "></div>-->
+				</ul>
+				<!--nav/-->
+				<div class="clears "></div>
+			</div>
+			<!--width1190/-->
+		</div>
+		<!--list-nav/-->
+		<!--<div style="background-color: #acecc9; ">
+			<div class="banner " style="background:url(images/ban.jpg) center center no-repeat; "></div>
+		</div>-->
+		
+		
+		
+		
+				
+        <div class="banner-content ">
+            <div class="banner-slide ">
+                <div class="banner-slide-circle hd ">
+                    <ul>
+                        <li class="on "></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+						<li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="banner-slide-image bd ">
+                    <ul>
+                        <li>
+                            <a href="# ">
+                                <img src="slide/images/banner1.jpg " alt=" ">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="# ">
+                                <img src="slide/images/banner2.jpg " alt=" ">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="# ">
+                                <img src="slide/images/banner3.jpg " alt=" ">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="# ">
+                                <img src="slide/images/banner4.jpg " alt=" ">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="# ">
+                                <img src="slide/images/banner5.jpg " alt=" ">
+                            </a>
+                        </li>
+						<li>
+                            <a href="# ">
+                                <img src="slide/images/banner6.jpg " alt=" ">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="# ">
+                                <img src="slide/images/banner7.jpg " alt=" ">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="banner-hidden ">
+                <div class="banner-background-01 "></div>
+                <div class="banner-background-02 "></div>
+            </div>
+        </div>
+		
+        <script type="text/javascript ">
+            
+            jQuery(".banner-slide ").slide({mainCell:".bd ul ",autoPlay:true,delayTime:2000});
+        
+        </script>
+        
+        
+       <div id="bodycontent">
+       	
+       	
+       </div>
+
+
+		<div class="xinren ">
+			<div class="width1190 ">
+				<dl style="background:url(images/icon1.jpg) left center no-repeat; ">
+					<dt>承诺</dt>
+					<dd>真实可信100%真商家<br />链家承诺，假一赔百</dd>
+				</dl>
+				<dl style="background:url(images/icon2.jpg) left center no-repeat; ">
+					<dt>权威</dt>
+					<dd>严格筛查<br />信息最权威覆盖最广</dd>
+				</dl>
+				<dl style="background:url(images/icon3.jpg) left center no-repeat; ">
+					<dt>信赖</dt>
+					<dd>专业服务<br />信赖之选</dd>
+				</dl>
+				<dl style="background:url(images/icon4.jpg) left center no-repeat; ">
+					<dt>安全</dt>
+					<dd>安心承诺 保驾护航<br />多重风险防范机制 无后顾之忧</dd>
+				</dl>
+				<div class="clears "></div>
+			</div>
+			<!--width1190/-->
+		</div>
+		<!--xinren/-->
+		<div class="footer ">
+			<div class="width1190 ">
+				<div class="fl ">
+					<a href="index.html "><strong>电商信息服务网</strong></a>
+					<a href="about.html ">关于我们</a>
+					<a href="contact.html ">联系我们</a>
+					<a href="user.html ">个人中心</a>
+				</div>
+				<div class="fr ">
+					<dl>
+						<dt><img src="images/erweima.png " width="76 " height="76 " /></dt>
+						<dd>微信扫一扫<br />信息点评，精彩发布</dd>
+					</dl>
+					<dl>
+						<dt><img src="images/erweima.png " width="76 " height="76 " /></dt>
+						<dd>微信扫一扫<br />信息点评，精彩发布</dd>
+					</dl>
+					<div class="clears "></div>
+				</div>
+				<div class="clears "></div>
+			</div>
+			<!--width1190/-->
+		</div>
+		<!--footer/-->
+		<div class="copy ">Copyright@ 2015 电商信息服务网 版权所有 沪ICP备1234567号-0&nbsp;&nbsp;&nbsp;&nbsp;技术支持：
+			<a target="_blank " href="http://www.webqin.net/ ">David</a>
+		</div>
+		<div class="bg100 "></div>
+		<div class="zhidinggoufang ">
+			<h2>指定购房 <span class="close ">X</span></h2>
+			<form action="# " method="get ">
+				<div class="zhiding-list ">
+					<label>选择区域：</label>
+					<select>
+						<option>智慧园</option>
+						<option>立民村</option>
+						<option>塘口村</option>
+						<option>勤劳村</option>
+						<option>芦胜村</option>
+						<option>知新村</option>
+					</select>
+				</div>
+				<div class="zhiding-list ">
+					<label>方式：</label>
+					<select>
+						<option>租房</option>
+						<option>新房</option>
+						<option>二手房</option>
+					</select>
+				</div>
+				<div class="zhiding-list ">
+					<label>联系方式：</label>
+					<input type="text " />
+				</div>
+				<div class="zhidingsub "><input type="submit " value="提交 " /></div>
+			</form>
+			<div class="zhidingtext ">
+				<h3>指定购房注意事宜：</h3>
+				<p>1、请详细输入您所需要购买的房源信息(精确到小区)</p>
+				<p>2、制定购房申请提交后，客服中心会在24小时之内与您取得联系</p>
+				<p>3、如有任何疑问，请随时拨打我们的电话：400-000-0000</p>
+			</div>
+			<!--zhidingtext/-->
+		</div>
+		<!--zhidinggoufang/-->
+	</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="width1190">
+			<div class="vip-left">
+				<div class="vipNav">
+					<h3 class="vipTitle">会员中心</h3>
+					<dl>
+						<dt class="vipIcon3">账户设置</dt>
+						<dd>
+							<a id="user">我的资料</a>
+							<a id="user_pwd">账户密码设置</a>
+						</dd>
+						<dt class="vipIcon1">我的刷单</dt>
+						<dd>
+							<a id="guanzhu">关注商家</a>
+							<a id="joinus">加入我们</a>
+							<a id="single">社区自由经纪人</a>
+						</dd>
+					</dl>
+				</div>
+				<!--vipNav/-->
+			</div>
+			<!--vip-left/-->
+
+			<div class="vip-right" id="vip-right">
+
+				<!--jingjiren/-->
+			</div>
+			<!--vip-right/-->
+			<div class="clearfix"></div>
+		</div>
+		<!--width1190/-->
+		<script type="text/javascript">
+			$(function() {
+
+				$("#single").click(function() {
+					$("#vip-right").load("html/subhtml/single.html");
+				});
+
+				$("#user").click(function() {
+					$("#vip-right").load("html/subhtml/user.html");
+				});
+
+				$("#user_pwd").click(function() {
+					$("#vip-right").load("html/subhtml/user_pwd.html");
+				});
+
+				$("#guanzhu").click(function() {
+					$("#vip-right").load("html/subhtml/guanzhu.html");
+				});
+
+				$("#joinus").click(function() {
+					$("#vip-right").load("html/subhtml/joinus.html");
+				});
+
+				
+
+			})
+		</script>
+	</body>
+
+</html>
