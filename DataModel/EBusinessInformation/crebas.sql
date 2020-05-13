@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/5/13 20:53:43                           */
+/* Created on:     2020/5/13 21:40:34                           */
 /*==============================================================*/
 
 
@@ -11,6 +11,8 @@ drop table if exists a_role_resources;
 drop table if exists a_user;
 
 drop table if exists a_user_role;
+
+drop table if exists advertising;
 
 drop table if exists c_company_information;
 
@@ -74,6 +76,22 @@ create table a_user_role
 );
 
 alter table a_user_role comment '用户角色表';
+
+/*==============================================================*/
+/* Table: advertising                                           */
+/*==============================================================*/
+create table advertising
+(
+   advertisingid        varchar(32) not null,
+   companyid            varchar(32),
+   image                varchar(100),
+   location             varchar(100),
+   rank                 int default 0,
+   createtime           datetime,
+   primary key (advertisingid)
+);
+
+alter table advertising comment 'advertising';
 
 /*==============================================================*/
 /* Table: c_company_information                                 */
@@ -148,6 +166,9 @@ alter table a_user_role add constraint FK_Reference_1 foreign key (userid)
 
 alter table a_user_role add constraint FK_Reference_2 foreign key (roleid)
       references a_role (roleid) on delete restrict on update restrict;
+
+alter table advertising add constraint FK_Reference_6 foreign key (companyid)
+      references c_company_information (companyid) on delete restrict on update restrict;
 
 alter table monitor add constraint FK_Reference_5 foreign key (userid)
       references a_user (userid) on delete restrict on update restrict;

@@ -7,10 +7,18 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="tel" property="tel" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="ishome" property="ishome" jdbcType="VARCHAR" />
     <result column="rank" property="rank" jdbcType="INTEGER" />
+    <result column="advertising" property="advertising" jdbcType="VARCHAR" />
+    <result column="servertype" property="servertype" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="qualification" property="qualification" jdbcType="VARCHAR" />
+    <result column="popularity" property="popularity" jdbcType="INTEGER" />
+    <result column="reputation" property="reputation" jdbcType="INTEGER" />
+    <result column="policy" property="policy" jdbcType="VARCHAR" />
+    <result column="culture" property="culture" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +79,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    companyid, companyname, type, image, tel, url, createtime, ishome, rank
+    companyid, companyname, type, image, tel, createtime, url, ishome, rank, advertising, 
+    servertype, price, qualification, popularity, reputation, policy, culture
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ebis.adminbackend.po.CCompanyInformationExample" >
     select
@@ -105,11 +114,17 @@
   </delete>
   <insert id="insert" parameterType="com.ebis.adminbackend.po.CCompanyInformation" >
     insert into c_company_information (companyid, companyname, type, 
-      image, tel, url, createtime, 
-      ishome, rank)
+      image, tel, createtime, 
+      url, ishome, rank, 
+      advertising, servertype, price, 
+      qualification, popularity, reputation, 
+      policy, culture)
     values (#{companyid,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{image,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{ishome,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER})
+      #{image,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{url,jdbcType=VARCHAR}, #{ishome,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER}, 
+      #{advertising,jdbcType=VARCHAR}, #{servertype,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, 
+      #{qualification,jdbcType=VARCHAR}, #{popularity,jdbcType=INTEGER}, #{reputation,jdbcType=INTEGER}, 
+      #{policy,jdbcType=VARCHAR}, #{culture,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ebis.adminbackend.po.CCompanyInformation" >
     insert into c_company_information
@@ -129,17 +144,41 @@
       <if test="tel != null" >
         tel,
       </if>
-      <if test="url != null" >
-        url,
-      </if>
       <if test="createtime != null" >
         createtime,
+      </if>
+      <if test="url != null" >
+        url,
       </if>
       <if test="ishome != null" >
         ishome,
       </if>
       <if test="rank != null" >
         rank,
+      </if>
+      <if test="advertising != null" >
+        advertising,
+      </if>
+      <if test="servertype != null" >
+        servertype,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="qualification != null" >
+        qualification,
+      </if>
+      <if test="popularity != null" >
+        popularity,
+      </if>
+      <if test="reputation != null" >
+        reputation,
+      </if>
+      <if test="policy != null" >
+        policy,
+      </if>
+      <if test="culture != null" >
+        culture,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -158,17 +197,41 @@
       <if test="tel != null" >
         #{tel,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
-      </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
       </if>
       <if test="ishome != null" >
         #{ishome,jdbcType=VARCHAR},
       </if>
       <if test="rank != null" >
         #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="advertising != null" >
+        #{advertising,jdbcType=VARCHAR},
+      </if>
+      <if test="servertype != null" >
+        #{servertype,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="qualification != null" >
+        #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="popularity != null" >
+        #{popularity,jdbcType=INTEGER},
+      </if>
+      <if test="reputation != null" >
+        #{reputation,jdbcType=INTEGER},
+      </if>
+      <if test="policy != null" >
+        #{policy,jdbcType=VARCHAR},
+      </if>
+      <if test="culture != null" >
+        #{culture,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -196,17 +259,41 @@
       <if test="record.tel != null" >
         tel = #{record.tel,jdbcType=VARCHAR},
       </if>
-      <if test="record.url != null" >
-        url = #{record.url,jdbcType=VARCHAR},
-      </if>
       <if test="record.createtime != null" >
         createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
       </if>
       <if test="record.ishome != null" >
         ishome = #{record.ishome,jdbcType=VARCHAR},
       </if>
       <if test="record.rank != null" >
         rank = #{record.rank,jdbcType=INTEGER},
+      </if>
+      <if test="record.advertising != null" >
+        advertising = #{record.advertising,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servertype != null" >
+        servertype = #{record.servertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.qualification != null" >
+        qualification = #{record.qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.popularity != null" >
+        popularity = #{record.popularity,jdbcType=INTEGER},
+      </if>
+      <if test="record.reputation != null" >
+        reputation = #{record.reputation,jdbcType=INTEGER},
+      </if>
+      <if test="record.policy != null" >
+        policy = #{record.policy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.culture != null" >
+        culture = #{record.culture,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -220,10 +307,18 @@
       type = #{record.type,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
-      url = #{record.url,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      url = #{record.url,jdbcType=VARCHAR},
       ishome = #{record.ishome,jdbcType=VARCHAR},
-      rank = #{record.rank,jdbcType=INTEGER}
+      rank = #{record.rank,jdbcType=INTEGER},
+      advertising = #{record.advertising,jdbcType=VARCHAR},
+      servertype = #{record.servertype,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=INTEGER},
+      qualification = #{record.qualification,jdbcType=VARCHAR},
+      popularity = #{record.popularity,jdbcType=INTEGER},
+      reputation = #{record.reputation,jdbcType=INTEGER},
+      policy = #{record.policy,jdbcType=VARCHAR},
+      culture = #{record.culture,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -243,17 +338,41 @@
       <if test="tel != null" >
         tel = #{tel,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
-      </if>
       <if test="createtime != null" >
         createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="ishome != null" >
         ishome = #{ishome,jdbcType=VARCHAR},
       </if>
       <if test="rank != null" >
         rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="advertising != null" >
+        advertising = #{advertising,jdbcType=VARCHAR},
+      </if>
+      <if test="servertype != null" >
+        servertype = #{servertype,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="qualification != null" >
+        qualification = #{qualification,jdbcType=VARCHAR},
+      </if>
+      <if test="popularity != null" >
+        popularity = #{popularity,jdbcType=INTEGER},
+      </if>
+      <if test="reputation != null" >
+        reputation = #{reputation,jdbcType=INTEGER},
+      </if>
+      <if test="policy != null" >
+        policy = #{policy,jdbcType=VARCHAR},
+      </if>
+      <if test="culture != null" >
+        culture = #{culture,jdbcType=VARCHAR},
       </if>
     </set>
     where companyid = #{companyid,jdbcType=VARCHAR}
@@ -264,10 +383,18 @@
       type = #{type,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
+      url = #{url,jdbcType=VARCHAR},
       ishome = #{ishome,jdbcType=VARCHAR},
-      rank = #{rank,jdbcType=INTEGER}
+      rank = #{rank,jdbcType=INTEGER},
+      advertising = #{advertising,jdbcType=VARCHAR},
+      servertype = #{servertype,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      qualification = #{qualification,jdbcType=VARCHAR},
+      popularity = #{popularity,jdbcType=INTEGER},
+      reputation = #{reputation,jdbcType=INTEGER},
+      policy = #{policy,jdbcType=VARCHAR},
+      culture = #{culture,jdbcType=VARCHAR}
     where companyid = #{companyid,jdbcType=VARCHAR}
   </update>
 </mapper>

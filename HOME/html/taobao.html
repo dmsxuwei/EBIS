@@ -92,15 +92,18 @@
 			<!--pro-left/-->
 			<div class="pro-right">
 				<h2 class="right-title">新上服务商</h2>
-				<div class="right-pro">
-					<dl>
-						<dt><a href="proinfo.html"><img src="images/fang8.jpg" /></a></dt>
+				<div id="advertising" class="right-pro">
+					<!--				<dl>
+						<dt><a href="proinfo.html">
+							<img src="images/fang8.jpg" /></a></dt>
 						<dd>
 							<h3><a href="proinfo.html">引爆流量,安全刷单</a></h3>
 							<div class="pro-fang">我们与您共同成长</div>
 							<div class="right-price">1100元/单</div>
 						</dd>
 					</dl>
+					
+					
 					<dl>
 						<dt><a href="proinfo.html"><img src="images/fang7.jpg" /></a></dt>
 						<dd>
@@ -117,7 +120,7 @@
 							<div class="pro-fang">我们与您共同成长</div>
 							<div class="right-price">1100元/单</div>
 						</dd>
-					</dl>
+					</dl>-->
 
 				</div>
 				<!--right-pro/-->
@@ -126,33 +129,7 @@
 			<div class="clears"></div>
 
 			<div class="center">
-				<ul id="mlist" class="pagination">
-					<!--					<li>
-						<a href="#">«</a>
-					</li>
-					<li>
-						<a href="#">1</a>
-					</li>
-					<li>
-						<a class="active" href="#">2</a>
-					</li>
-					<li>
-						<a href="#">3</a>
-					</li>
-					<li>
-						<a href="#">4</a>
-					</li>
-					<li>
-						<a href="#">5</a>
-					</li>
-					<li>
-						<a href="#">6</a>
-					</li>
-					<li><a href="#">7</a></li>
-					<li>
-						<a href="#">»</a>
-					</li>-->
-				</ul>
+				<ul id="mlist" class="pagination"></ul>
 			</div>
 
 		</div>
@@ -198,17 +175,17 @@
 							}
 
 							var allpages;
-							if(total % rows == 0) {
-								allpages = total / rows;
-							} else {
-								allpages = total / rows + 1;
-							}
+							allpages = total / rows;
+							/*							if(total % rows == 0) {
+															
+														} else {
+															allpages = total / rows + 1;
+														}*/
 							if(rows > allpages) allpages = 1
 
 							if(allpages != 1) {
 
 								$("#mlist").append("<li><a onclick='requestMerchant(" + pripage + "," + rows + ")'>«</a></li>");
-
 								for(i = 0; i < allpages; i++) {
 
 									if(page == (i + 1)) {
@@ -266,6 +243,38 @@
 					$("#merchantdiv").append(txt1); // 追加新元素
 				}
 			}
+
+			$.ajax({
+				url: base_url + url_GetMerchantObject,
+				type: 'post', //提交的方式
+				dataType: 'json',
+				async: true,
+				data: {
+					page: 1,
+					rows: 20,
+					type: '1'
+				},
+				error: function(request) { //失败的话
+					$.messager.alert('ERROR', 'Connection error');
+				},
+				success: function(result) {
+					
+					for(i = 0; i < 3; i++) {
+						var img = result.result.rows[i].image;
+						var txt1 = "<dl><dt>" +
+							"<a href=\"proinfo.html\">" +
+							"<img src=\"" + pic_path + img + "\" width=\"250\" height=\"140\" />" +
+							"</a>"+
+							"</dt><dd>" +
+							"<h3><a href=\"proinfo.html\">引爆流量,安全刷单</a></h3>" +
+							"<div class=\"pro-fang\">我们与您共同成长</div>" +
+							"<div class=\"right-price\">1100元/单</div>" +
+							"</dd></dl>";
+						$("#advertising").append(txt1); // 追加新元素
+					}
+
+				}
+			});
 		</script>
 
 	</body>

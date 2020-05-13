@@ -13,13 +13,29 @@ public class CCompanyInformation {
 
     private String tel;
 
-    private String url;
-
     private Date createtime;
+
+    private String url;
 
     private String ishome;
 
     private Integer rank;
+
+    private String advertising;
+
+    private String servertype;
+
+    private Integer price;
+
+    private String qualification;
+
+    private Integer popularity;
+
+    private Integer reputation;
+
+    private String policy;
+
+    private String culture;
 
     public String getCompanyid() {
         return companyid;
@@ -61,20 +77,20 @@ public class CCompanyInformation {
         this.tel = tel == null ? null : tel.trim();
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
-    }
-
     public Date getCreatetime() {
         return createtime;
     }
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     public String getIshome() {
@@ -91,5 +107,69 @@ public class CCompanyInformation {
 
     public void setRank(Integer rank) {
         this.rank = rank;
+    }
+
+    public String getAdvertising() {
+        return advertising;
+    }
+
+    public void setAdvertising(String advertising) {
+        this.advertising = advertising == null ? null : advertising.trim();
+    }
+
+    public String getServertype() {
+        return servertype;
+    }
+
+    public void setServertype(String servertype) {
+        this.servertype = servertype == null ? null : servertype.trim();
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification == null ? null : qualification.trim();
+    }
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
+    }
+
+    public Integer getReputation() {
+        return reputation;
+    }
+
+    public void setReputation(Integer reputation) {
+        this.reputation = reputation;
+    }
+
+    public String getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(String policy) {
+        this.policy = policy == null ? null : policy.trim();
+    }
+
+    public String getCulture() {
+        return culture;
+    }
+
+    public void setCulture(String culture) {
+        this.culture = culture == null ? null : culture.trim();
     }
 }
