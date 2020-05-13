@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/5/1 21:54:25                            */
+/* Created on:     2020/5/13 20:53:43                           */
 /*==============================================================*/
 
 
@@ -82,13 +82,21 @@ create table c_company_information
 (
    companyid            varchar(32) not null,
    companyname          varchar(50),
-   type                 varchar(20),
-   image                varchar(50),
+   type                 varchar(20) comment '淘宝，京东',
+   image                varchar(100),
    tel                  varchar(20),
-   url                  varchar(50),
    createtime           datetime,
+   url                  varchar(100),
    ishome               varchar(10),
    rank                 int,
+   advertising          varchar(50),
+   servertype           varchar(50) comment '流量优化，爆款打造',
+   price                int,
+   qualification        varchar(255),
+   popularity           int,
+   reputation           int,
+   policy               varchar(255),
+   culture              varchar(255),
    primary key (companyid)
 );
 

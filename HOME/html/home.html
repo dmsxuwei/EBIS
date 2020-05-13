@@ -9,7 +9,7 @@
 
 	<body>
 		<div class="width1190">
-			<h2 class="title">淘宝刷单 <a href="pro_zu.html">更多&gt;&gt;</a></h2>
+			<h2 class="title">淘宝刷单 <a id="more" onclick="moreinfo(1)">更多&gt;&gt;</a></h2>
 			<div class="index-fang-list">
 				<dl>
 					<dt style=""><a id="link1"><img id="img1" width="286" height="188" /></a></dt>
@@ -48,7 +48,7 @@
 			</div>
 			<!--index-fang-list/-->
 
-			<h2 class="title">京东刷单 <a href="pro_zu.html">更多&gt;&gt;</a></h2>
+			<h2 class="title">京东刷单 <a id="more" onclick="moreinfo(2)">更多&gt;&gt;</a></h2>
 			<div class="index-fang-list">
 				<dl>
 					<dt style=""><a id="link1_j"><img id="img1_j" width="286" height="188" /></a></dt>
@@ -88,7 +88,7 @@
 
 			<!--index-fang-list/-->
 
-			<h2 class="title">拼多多刷单 <a href="pro_zu.html">更多&gt;&gt;</a></h2>
+			<h2 class="title">拼多多刷单 <a id="more" onclick="moreinfo(3)">更多&gt;&gt;</a></h2>
 			<div class="index-fang-list">
 				<dl>
 					<dt style=""><a id="link1_p"><img id="img1_p" width="286" height="188" /></a></dt>
@@ -126,7 +126,7 @@
 				<div class="clears"></div>
 			</div>
 
-			<h2 class="title">短视频刷单 <a href="pro_zu.html">更多&gt;&gt;</a></h2>
+			<h2 class="title">短视频刷单 <a id="more" onclick="moreinfo(4)">更多&gt;&gt;</a></h2>
 			<div class="index-fang-list">
 				<dl>
 					<dt style=""><a id="link1_d"><img id="img1_d" width="286" height="188" /></a></dt>
@@ -244,6 +244,25 @@
 
 			var url_GetMerchantObject = 'merchant/getMerchantsForweb_home';
 			var url_accessRecord = 'monitor/accessRecord';
+
+			function moreinfo(type) {
+				if(type == 1) {
+					$("#bodycontent").load("html/taobao.html");
+				};
+
+				if(type == 2) {
+					$("#bodycontent").load("html/jingdong.html");
+				};
+				if(type == 3) {
+				$("#bodycontent").load("html/pingduoduo.html");
+				};
+				if(type == 4) {
+				$("#bodycontent").load("html/duanshiping.html");
+				};
+
+			}
+
+			/*记录流量*/
 			$.ajax({
 				url: base_url + url_accessRecord,
 				type: 'post', //提交的方式
@@ -396,8 +415,7 @@
 
 				}
 			});
-			
-			
+
 			$.ajax({
 				url: base_url + url_GetMerchantObject,
 				type: 'post', //提交的方式

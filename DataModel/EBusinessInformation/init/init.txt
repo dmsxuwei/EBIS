@@ -2,3 +2,4 @@
 
 INSERT INTO `resources` VALUES ('1', '商家管理', '', '0', 1, 1, 1, 'fa-desktop', 100);
 INSERT INTO `resources` VALUES ('11', '商家信息管理', 'html/merchant.html', '1', 1, 1, 1, '', 99);
+INSERT INTO `resources` VALUES ('12', '流量管理', 'html/monitor.html', '1', 1, 1, 1, '', 99);

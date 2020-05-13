@@ -40,6 +40,13 @@ public class MechantController extends BaseController {
 	@Autowired
 	private CompanyInformationService companyInformationService;
 
+	/**
+	 * 首页用 不分页
+	 * @param request
+	 * @param type
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/getMerchantsForweb_home", method = RequestMethod.POST)
 	@ResponseBody
 	public ResultBody getMerchantsForweb(HttpServletRequest request, @RequestParam(name = "type") String type)
@@ -49,16 +56,38 @@ public class MechantController extends BaseController {
 		return ResultBody.success(cCompanyInformations);
 	}
 	
-	
+	/**
+	 * 分页
+	 * @param request
+	 * @param page
+	 * @param rows
+	 * @param type
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/getMerchantsByPage", method = RequestMethod.POST)
+	@ResponseBody
+	public ResultBody getMerchantsByPage(HttpServletRequest request, 
+			@RequestParam(name = "page") String page,
+			@RequestParam(name = "rows") String rows,
+			@RequestParam(name = "type") String type) throws Exception {
+		PageInfo<CCompanyInformation> pages = companyInformationService.selectByExample(Integer.parseInt(page),
+				Integer.parseInt(rows),type);
+		List<CCompanyInformation> cCompanyInformations = pages.getList();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rows", cCompanyInformations);
+		map.put("total", pages.getTotal());
+		return ResultBody.success(map);
+	}
 
-	// ================================================================================
+	// =============================后台===================================================
 
 	@RequestMapping(value = "/getMerchants", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getMerchants(HttpServletRequest request, @RequestParam(name = "page") String page,
-			@RequestParam(name = "rows") String rows) throws Exception {
+			@RequestParam(name = "rows") String rows,@RequestParam(name = "type", required=false) String type) throws Exception {
 		PageInfo<CCompanyInformation> pages = companyInformationService.selectByExample(Integer.parseInt(page),
-				Integer.parseInt(rows));
+				Integer.parseInt(rows),type);
 		List<CCompanyInformation> cCompanyInformations = pages.getList();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("rows", cCompanyInformations);

@@ -1,7 +1,9 @@
 package com.ebis.adminbackend.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ebis.adminbackend.common.GenerateID;
 import com.ebis.adminbackend.common.util.IpUtil;
 import com.ebis.adminbackend.exception.ResultBody;
+import com.ebis.adminbackend.po.CCompanyInformation;
 import com.ebis.adminbackend.po.Monitor;
 import com.ebis.adminbackend.service.MonitorService;
+import com.github.pagehelper.PageInfo;
 
 import io.swagger.annotations.Api;
 
@@ -33,7 +37,7 @@ public class MonitorController {
 
 	@RequestMapping(value = "/accessRecord", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBody getMerchantsForweb(HttpServletRequest request, @RequestParam(name = "msg") String msg)
+	public ResultBody accessRecord(HttpServletRequest request, @RequestParam(name = "msg",required=false) String msg)
 			throws Exception {
 		// 获取IP地址
 		String ipAddress = IpUtil.getIpAddr(request);
@@ -48,5 +52,23 @@ public class MonitorController {
 
 		return ResultBody.success(result);
 	}
+	
+	
+	// ========================后台========================================================
+	@RequestMapping(value = "/getMonitors", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getMerchants(HttpServletRequest request, @RequestParam(name = "page") String page,
+			@RequestParam(name = "rows") String rows) throws Exception {
+		PageInfo<Monitor> pages = monitorService.selectByExample(Integer.parseInt(page),
+				Integer.parseInt(rows));
+		List<Monitor> cCompanyInformations = pages.getList();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rows", cCompanyInformations);
+		map.put("total", pages.getTotal());
+		return map;
+	}
+	
+	
+	
 
 }

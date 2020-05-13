@@ -23,12 +23,17 @@ public class CompanyInformationService {
 	@Autowired
 	private CCompanyInformationMapper cCompanyInformationMapper;
 
-	public PageInfo<CCompanyInformation> selectByExample(Integer pageNo, Integer pageSize) {
+	public PageInfo<CCompanyInformation> selectByExample(Integer pageNo, Integer pageSize,String type) {
 		pageNo = pageNo == null ? 1 : pageNo;
 		pageSize = pageSize == null ? 10 : pageSize;
 		PageHelper.startPage(pageNo, pageSize);
 
-		List<CCompanyInformation> list = cCompanyInformationMapper.selectByExample(null);
+		CCompanyInformationExample example = new CCompanyInformationExample();
+		example.setOrderByClause("rank desc");
+		Criteria criteria = example.createCriteria();
+		if(type!=null &&! "".equals(type))criteria.andTypeEqualTo(type);
+		
+		List<CCompanyInformation> list = cCompanyInformationMapper.selectByExample(example);
 		PageInfo<CCompanyInformation> page = new PageInfo<CCompanyInformation>(list);
 		return page;
 	}
