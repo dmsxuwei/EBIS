@@ -1,5 +1,10 @@
-﻿
+﻿drop database ebis;
+create database ebis character set 'utf8' collate 'utf8_general_ci';
+
+
 
 INSERT INTO `resources` VALUES ('1', '商家管理', '', '0', 1, 1, 1, 'fa-desktop', 100);
 INSERT INTO `resources` VALUES ('11', '商家信息管理', 'html/merchant.html', '1', 1, 1, 1, '', 99);
-INSERT INTO `resources` VALUES ('12', '流量管理', 'html/monitor.html', '1', 1, 1, 1, '', 99);
+INSERT INTO `resources` VALUES ('12', '广告管理', 'html/advertising.html', '1', 1, 1, 1, '', 98);
+INSERT INTO `resources` VALUES ('13', '社区管理', 'html/community.html', '1', 1, 1, 1, '', 97);
+INSERT INTO `resources` VALUES ('14', '流量管理', 'html/monitor.html', '1', 1, 1, 1, '', 96);

@@ -5,27 +5,23 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.ebis.adminbackend.common.FileUtil;
 import com.ebis.adminbackend.common.GenerateID;
 import com.ebis.adminbackend.exception.ResultBody;
-import com.ebis.adminbackend.po.CCompanyInformation;
-import com.ebis.adminbackend.service.CompanyInformationService;
+import com.ebis.adminbackend.po.Merchant;
+import com.ebis.adminbackend.service.MerchantService;
 import com.github.pagehelper.PageInfo;
 
 import io.swagger.annotations.Api;
@@ -38,7 +34,7 @@ public class MechantController extends BaseController {
 	private static final Logger log = LoggerFactory.getLogger(MechantController.class);
 
 	@Autowired
-	private CompanyInformationService companyInformationService;
+	private MerchantService merchantService;
 
 	/**
 	 * 首页用 不分页
@@ -52,8 +48,8 @@ public class MechantController extends BaseController {
 	public ResultBody getMerchantsForweb(HttpServletRequest request, @RequestParam(name = "type") String type)
 			throws Exception {
 		log.info("" + type);
-		List<CCompanyInformation> cCompanyInformations = companyInformationService.selectAllCompanyinformation(type);
-		return ResultBody.success(cCompanyInformations);
+		List<Merchant> merchants = merchantService.selectAllCompanyinformation(type);
+		return ResultBody.success(merchants);
 	}
 	
 	/**
@@ -71,11 +67,11 @@ public class MechantController extends BaseController {
 			@RequestParam(name = "page") String page,
 			@RequestParam(name = "rows") String rows,
 			@RequestParam(name = "type") String type) throws Exception {
-		PageInfo<CCompanyInformation> pages = companyInformationService.selectByExample(Integer.parseInt(page),
+		PageInfo<Merchant> pages = merchantService.selectByExample(Integer.parseInt(page),
 				Integer.parseInt(rows),type);
-		List<CCompanyInformation> cCompanyInformations = pages.getList();
+		List<Merchant> merchants = pages.getList();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("rows", cCompanyInformations);
+		map.put("rows", merchants);
 		map.put("total", pages.getTotal());
 		return ResultBody.success(map);
 	}
@@ -86,11 +82,11 @@ public class MechantController extends BaseController {
 	@ResponseBody
 	public Map<String, Object> getMerchants(HttpServletRequest request, @RequestParam(name = "page") String page,
 			@RequestParam(name = "rows") String rows,@RequestParam(name = "type", required=false) String type) throws Exception {
-		PageInfo<CCompanyInformation> pages = companyInformationService.selectByExample(Integer.parseInt(page),
+		PageInfo<Merchant> pages = merchantService.selectByExample(Integer.parseInt(page),
 				Integer.parseInt(rows),type);
-		List<CCompanyInformation> cCompanyInformations = pages.getList();
+		List<Merchant> merchants = pages.getList();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("rows", cCompanyInformations);
+		map.put("rows", merchants);
 		map.put("total", pages.getTotal());
 		return map;
 	}
@@ -106,42 +102,48 @@ public class MechantController extends BaseController {
 	@RequestMapping(value = "/addMerchant", method = RequestMethod.POST)
 	@ResponseBody
 	public ResultBody addMerchant(@RequestParam("file") MultipartFile file,
-			@RequestParam(name = "companyname", required = true) @NotBlank @Size(max = 200) String companyname,
+			@RequestParam(name = "merchantname", required = true) @NotBlank @Size(max = 200) String merchantname,
 			@RequestParam(name = "url", required = true) @NotBlank @Size(max = 200) String url,
 			@RequestParam(name = "type", required = true) @NotBlank @Size(max = 200) String type,
 			@RequestParam(name = "tel", required = false) @Size(max = 200) String tel,
-			@RequestParam(name = "rank", required = false) @Size(max = 200) String rank) throws Exception {
+			@RequestParam(name = "rank", required = false) @Size(max = 200) String rank,
+			@RequestParam(name = "price", required = false) @Size(max = 200) String price,
+			@RequestParam(name = "policy", required = false) @Size(max = 200) String policy,
+			@RequestParam(name = "culture", required = false) @Size(max = 200) String culture) throws Exception {
 
-		CCompanyInformation cCompanyInformation = new CCompanyInformation();
+		Merchant merchant = new Merchant();
 		if (!file.isEmpty()) {
 			String returnfilename = FileUtil.writeFile(file, picture_path + "" + type + "/");
-			cCompanyInformation.setImage(type + "/" + returnfilename);
+			merchant.setImage(type + "/" + returnfilename);
 		}
-		cCompanyInformation.setCompanyid(GenerateID.getUUID());
-		cCompanyInformation.setCompanyname(companyname);
-		cCompanyInformation.setUrl(url);
-		cCompanyInformation.setType(type);
-		cCompanyInformation.setTel(tel);
+		merchant.setMerchantid(GenerateID.getUUID());
+		merchant.setMerchantname(merchantname);
+		merchant.setUrl(url);
+		merchant.setType(type);
+		merchant.setTel(tel);
+		merchant.setPrice((new Double(Double.parseDouble(price) * 100)).intValue());
+		merchant.setPolicy(policy);
+		merchant.setCulture(culture);
 		if (rank == null || "".equals(rank)) {
-			cCompanyInformation.setRank(0);
+			merchant.setRank(0);
 		} else {
-			cCompanyInformation.setRank(Integer.parseInt(rank));
+			merchant.setRank(Integer.parseInt(rank));
 		}
 
-		cCompanyInformation.setCreatetime(new Date());
+		merchant.setCreatetime(new Date());
 
-		int result = companyInformationService.insertSelective(cCompanyInformation); // 0 success 1 failed
+		int result = merchantService.insertSelective(merchant); // 0 success 1 failed
 		return ResultBody.success(result);
 	}
 
 	@RequestMapping(value = "/delMerchant", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBody delMerchant(@RequestParam(name = "companyid") String companyid) throws Exception {
-		CCompanyInformation cCompanyInformation = companyInformationService.selectByPrimaryKey(companyid);
-		int result = companyInformationService.deleteByPrimaryKey(companyid);
+	public ResultBody delMerchant(@RequestParam(name = "merchantid") String merchantid) throws Exception {
+		Merchant merchant = merchantService.selectByPrimaryKey(merchantid);
+		int result = merchantService.deleteByPrimaryKey(merchantid);
 
 		String rootpath = picture_path;
-		String filePath = rootpath + cCompanyInformation.getImage();
+		String filePath = rootpath + merchant.getImage();
 		System.out.println(filePath);
 		File dest = new File(filePath);
 		dest.delete();

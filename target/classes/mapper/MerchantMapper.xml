@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ebis.adminbackend.dao.CCompanyInformationMapper" >
-  <resultMap id="BaseResultMap" type="com.ebis.adminbackend.po.CCompanyInformation" >
-    <id column="companyid" property="companyid" jdbcType="VARCHAR" />
-    <result column="companyname" property="companyname" jdbcType="VARCHAR" />
+<mapper namespace="com.ebis.adminbackend.dao.MerchantMapper" >
+  <resultMap id="BaseResultMap" type="com.ebis.adminbackend.po.Merchant" >
+    <id column="merchantid" property="merchantid" jdbcType="VARCHAR" />
+    <result column="merchantname" property="merchantname" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="tel" property="tel" jdbcType="VARCHAR" />
@@ -79,16 +79,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    companyid, companyname, type, image, tel, createtime, url, ishome, rank, advertising, 
+    merchantid, merchantname, type, image, tel, createtime, url, ishome, rank, advertising, 
     servertype, price, qualification, popularity, reputation, policy, culture
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ebis.adminbackend.po.CCompanyInformationExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ebis.adminbackend.po.MerchantExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from c_company_information
+    from merchant
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -99,41 +99,41 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from c_company_information
-    where companyid = #{companyid,jdbcType=VARCHAR}
+    from merchant
+    where merchantid = #{merchantid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from c_company_information
-    where companyid = #{companyid,jdbcType=VARCHAR}
+    delete from merchant
+    where merchantid = #{merchantid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ebis.adminbackend.po.CCompanyInformationExample" >
-    delete from c_company_information
+  <delete id="deleteByExample" parameterType="com.ebis.adminbackend.po.MerchantExample" >
+    delete from merchant
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ebis.adminbackend.po.CCompanyInformation" >
-    insert into c_company_information (companyid, companyname, type, 
+  <insert id="insert" parameterType="com.ebis.adminbackend.po.Merchant" >
+    insert into merchant (merchantid, merchantname, type, 
       image, tel, createtime, 
       url, ishome, rank, 
       advertising, servertype, price, 
       qualification, popularity, reputation, 
       policy, culture)
-    values (#{companyid,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+    values (#{merchantid,jdbcType=VARCHAR}, #{merchantname,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
       #{image,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{url,jdbcType=VARCHAR}, #{ishome,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER}, 
       #{advertising,jdbcType=VARCHAR}, #{servertype,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, 
       #{qualification,jdbcType=VARCHAR}, #{popularity,jdbcType=INTEGER}, #{reputation,jdbcType=INTEGER}, 
       #{policy,jdbcType=VARCHAR}, #{culture,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.ebis.adminbackend.po.CCompanyInformation" >
-    insert into c_company_information
+  <insert id="insertSelective" parameterType="com.ebis.adminbackend.po.Merchant" >
+    insert into merchant
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="companyid != null" >
-        companyid,
+      <if test="merchantid != null" >
+        merchantid,
       </if>
-      <if test="companyname != null" >
-        companyname,
+      <if test="merchantname != null" >
+        merchantname,
       </if>
       <if test="type != null" >
         type,
@@ -182,11 +182,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="companyid != null" >
-        #{companyid,jdbcType=VARCHAR},
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=VARCHAR},
       </if>
-      <if test="companyname != null" >
-        #{companyname,jdbcType=VARCHAR},
+      <if test="merchantname != null" >
+        #{merchantname,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         #{type,jdbcType=VARCHAR},
@@ -235,20 +235,20 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ebis.adminbackend.po.CCompanyInformationExample" resultType="java.lang.Integer" >
-    select count(*) from c_company_information
+  <select id="countByExample" parameterType="com.ebis.adminbackend.po.MerchantExample" resultType="java.lang.Integer" >
+    select count(*) from merchant
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update c_company_information
+    update merchant
     <set >
-      <if test="record.companyid != null" >
-        companyid = #{record.companyid,jdbcType=VARCHAR},
+      <if test="record.merchantid != null" >
+        merchantid = #{record.merchantid,jdbcType=VARCHAR},
       </if>
-      <if test="record.companyname != null" >
-        companyname = #{record.companyname,jdbcType=VARCHAR},
+      <if test="record.merchantname != null" >
+        merchantname = #{record.merchantname,jdbcType=VARCHAR},
       </if>
       <if test="record.type != null" >
         type = #{record.type,jdbcType=VARCHAR},
@@ -301,9 +301,9 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update c_company_information
-    set companyid = #{record.companyid,jdbcType=VARCHAR},
-      companyname = #{record.companyname,jdbcType=VARCHAR},
+    update merchant
+    set merchantid = #{record.merchantid,jdbcType=VARCHAR},
+      merchantname = #{record.merchantname,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
@@ -323,11 +323,11 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ebis.adminbackend.po.CCompanyInformation" >
-    update c_company_information
+  <update id="updateByPrimaryKeySelective" parameterType="com.ebis.adminbackend.po.Merchant" >
+    update merchant
     <set >
-      <if test="companyname != null" >
-        companyname = #{companyname,jdbcType=VARCHAR},
+      <if test="merchantname != null" >
+        merchantname = #{merchantname,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=VARCHAR},
@@ -375,11 +375,11 @@
         culture = #{culture,jdbcType=VARCHAR},
       </if>
     </set>
-    where companyid = #{companyid,jdbcType=VARCHAR}
+    where merchantid = #{merchantid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ebis.adminbackend.po.CCompanyInformation" >
-    update c_company_information
-    set companyname = #{companyname,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.ebis.adminbackend.po.Merchant" >
+    update merchant
+    set merchantname = #{merchantname,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
@@ -395,6 +395,6 @@
       reputation = #{reputation,jdbcType=INTEGER},
       policy = #{policy,jdbcType=VARCHAR},
       culture = #{culture,jdbcType=VARCHAR}
-    where companyid = #{companyid,jdbcType=VARCHAR}
+    where merchantid = #{merchantid,jdbcType=VARCHAR}
   </update>
 </mapper>

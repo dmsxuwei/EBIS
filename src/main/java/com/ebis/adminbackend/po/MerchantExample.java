@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CCompanyInformationExample {
+public class MerchantExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public CCompanyInformationExample() {
+    public MerchantExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -105,143 +105,143 @@ public class CCompanyInformationExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andCompanyidIsNull() {
-            addCriterion("companyid is null");
+        public Criteria andMerchantidIsNull() {
+            addCriterion("merchantid is null");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidIsNotNull() {
-            addCriterion("companyid is not null");
+        public Criteria andMerchantidIsNotNull() {
+            addCriterion("merchantid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidEqualTo(String value) {
-            addCriterion("companyid =", value, "companyid");
+        public Criteria andMerchantidEqualTo(String value) {
+            addCriterion("merchantid =", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidNotEqualTo(String value) {
-            addCriterion("companyid <>", value, "companyid");
+        public Criteria andMerchantidNotEqualTo(String value) {
+            addCriterion("merchantid <>", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidGreaterThan(String value) {
-            addCriterion("companyid >", value, "companyid");
+        public Criteria andMerchantidGreaterThan(String value) {
+            addCriterion("merchantid >", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidGreaterThanOrEqualTo(String value) {
-            addCriterion("companyid >=", value, "companyid");
+        public Criteria andMerchantidGreaterThanOrEqualTo(String value) {
+            addCriterion("merchantid >=", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidLessThan(String value) {
-            addCriterion("companyid <", value, "companyid");
+        public Criteria andMerchantidLessThan(String value) {
+            addCriterion("merchantid <", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidLessThanOrEqualTo(String value) {
-            addCriterion("companyid <=", value, "companyid");
+        public Criteria andMerchantidLessThanOrEqualTo(String value) {
+            addCriterion("merchantid <=", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidLike(String value) {
-            addCriterion("companyid like", value, "companyid");
+        public Criteria andMerchantidLike(String value) {
+            addCriterion("merchantid like", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidNotLike(String value) {
-            addCriterion("companyid not like", value, "companyid");
+        public Criteria andMerchantidNotLike(String value) {
+            addCriterion("merchantid not like", value, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidIn(List<String> values) {
-            addCriterion("companyid in", values, "companyid");
+        public Criteria andMerchantidIn(List<String> values) {
+            addCriterion("merchantid in", values, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidNotIn(List<String> values) {
-            addCriterion("companyid not in", values, "companyid");
+        public Criteria andMerchantidNotIn(List<String> values) {
+            addCriterion("merchantid not in", values, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidBetween(String value1, String value2) {
-            addCriterion("companyid between", value1, value2, "companyid");
+        public Criteria andMerchantidBetween(String value1, String value2) {
+            addCriterion("merchantid between", value1, value2, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyidNotBetween(String value1, String value2) {
-            addCriterion("companyid not between", value1, value2, "companyid");
+        public Criteria andMerchantidNotBetween(String value1, String value2) {
+            addCriterion("merchantid not between", value1, value2, "merchantid");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameIsNull() {
-            addCriterion("companyname is null");
+        public Criteria andMerchantnameIsNull() {
+            addCriterion("merchantname is null");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameIsNotNull() {
-            addCriterion("companyname is not null");
+        public Criteria andMerchantnameIsNotNull() {
+            addCriterion("merchantname is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameEqualTo(String value) {
-            addCriterion("companyname =", value, "companyname");
+        public Criteria andMerchantnameEqualTo(String value) {
+            addCriterion("merchantname =", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameNotEqualTo(String value) {
-            addCriterion("companyname <>", value, "companyname");
+        public Criteria andMerchantnameNotEqualTo(String value) {
+            addCriterion("merchantname <>", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameGreaterThan(String value) {
-            addCriterion("companyname >", value, "companyname");
+        public Criteria andMerchantnameGreaterThan(String value) {
+            addCriterion("merchantname >", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameGreaterThanOrEqualTo(String value) {
-            addCriterion("companyname >=", value, "companyname");
+        public Criteria andMerchantnameGreaterThanOrEqualTo(String value) {
+            addCriterion("merchantname >=", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameLessThan(String value) {
-            addCriterion("companyname <", value, "companyname");
+        public Criteria andMerchantnameLessThan(String value) {
+            addCriterion("merchantname <", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameLessThanOrEqualTo(String value) {
-            addCriterion("companyname <=", value, "companyname");
+        public Criteria andMerchantnameLessThanOrEqualTo(String value) {
+            addCriterion("merchantname <=", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameLike(String value) {
-            addCriterion("companyname like", value, "companyname");
+        public Criteria andMerchantnameLike(String value) {
+            addCriterion("merchantname like", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameNotLike(String value) {
-            addCriterion("companyname not like", value, "companyname");
+        public Criteria andMerchantnameNotLike(String value) {
+            addCriterion("merchantname not like", value, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameIn(List<String> values) {
-            addCriterion("companyname in", values, "companyname");
+        public Criteria andMerchantnameIn(List<String> values) {
+            addCriterion("merchantname in", values, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameNotIn(List<String> values) {
-            addCriterion("companyname not in", values, "companyname");
+        public Criteria andMerchantnameNotIn(List<String> values) {
+            addCriterion("merchantname not in", values, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameBetween(String value1, String value2) {
-            addCriterion("companyname between", value1, value2, "companyname");
+        public Criteria andMerchantnameBetween(String value1, String value2) {
+            addCriterion("merchantname between", value1, value2, "merchantname");
             return (Criteria) this;
         }
 
-        public Criteria andCompanynameNotBetween(String value1, String value2) {
-            addCriterion("companyname not between", value1, value2, "companyname");
+        public Criteria andMerchantnameNotBetween(String value1, String value2) {
+            addCriterion("merchantname not between", value1, value2, "merchantname");
             return (Criteria) this;
         }
 

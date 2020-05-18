@@ -23,5 +23,33 @@ public class BaseDataController {
 				+ "]";
 		return json;
 	}
+	
+	@RequestMapping(value = "/getAdvertiseLocation", method = RequestMethod.POST)
+	@ResponseBody
+	public String getAdvertiseLocation(HttpServletRequest request) {
+		String json="["
+				+ "{\"id\":\"1\",\"text\":\"首页社区图\"},"
+				+ "{\"id\":\"2\",\"text\":\"淘宝右侧\"},"
+				+ "{\"id\":\"3\",\"text\":\"京东右侧\"},"
+				+ "{\"id\":\"4\",\"text\":\"拼多多右侧\"},"
+				+ "{\"id\":\"5\",\"text\":\"短视频右侧\"}"
+				
+				+ "]";
+		return json;
+	}
+	
+	@RequestMapping(value = "/getEventtype", method = RequestMethod.POST)
+	@ResponseBody
+	public String getEventtype(HttpServletRequest request) {
+		String json="["
+				+ "{\"id\":\"1\",\"text\":\"名片点击\"},"
+				+ "{\"id\":\"2\",\"text\":\"广告点击\"},"
+				+ "{\"id\":\"3\",\"text\":\"登陆事件\"},"
+				+ "{\"id\":\"4\",\"text\":\"首页浏览\"},"
+				+ "{\"id\":\"5\",\"text\":\"其它\"}"
+				
+				+ "]";
+		return json;
+	}
 
 }

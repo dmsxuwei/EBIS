@@ -15,6 +15,12 @@ public class Advertising {
 
     private Date createtime;
 
+    private String policy;
+
+    private String culture;
+
+    private String price;
+
     public String getAdvertisingid() {
         return advertisingid;
     }
@@ -61,5 +67,29 @@ public class Advertising {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public String getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(String policy) {
+        this.policy = policy == null ? null : policy.trim();
+    }
+
+    public String getCulture() {
+        return culture;
+    }
+
+    public void setCulture(String culture) {
+        this.culture = culture == null ? null : culture.trim();
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price == null ? null : price.trim();
     }
 }

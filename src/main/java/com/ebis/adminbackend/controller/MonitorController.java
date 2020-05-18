@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ebis.adminbackend.common.GenerateID;
 import com.ebis.adminbackend.common.util.IpUtil;
 import com.ebis.adminbackend.exception.ResultBody;
-import com.ebis.adminbackend.po.CCompanyInformation;
 import com.ebis.adminbackend.po.Monitor;
 import com.ebis.adminbackend.service.MonitorService;
 import com.github.pagehelper.PageInfo;

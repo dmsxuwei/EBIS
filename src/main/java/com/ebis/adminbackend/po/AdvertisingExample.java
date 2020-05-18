@@ -504,6 +504,216 @@ public class AdvertisingExample {
             addCriterion("createtime not between", value1, value2, "createtime");
             return (Criteria) this;
         }
+
+        public Criteria andPolicyIsNull() {
+            addCriterion("policy is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyIsNotNull() {
+            addCriterion("policy is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyEqualTo(String value) {
+            addCriterion("policy =", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyNotEqualTo(String value) {
+            addCriterion("policy <>", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyGreaterThan(String value) {
+            addCriterion("policy >", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyGreaterThanOrEqualTo(String value) {
+            addCriterion("policy >=", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyLessThan(String value) {
+            addCriterion("policy <", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyLessThanOrEqualTo(String value) {
+            addCriterion("policy <=", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyLike(String value) {
+            addCriterion("policy like", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyNotLike(String value) {
+            addCriterion("policy not like", value, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyIn(List<String> values) {
+            addCriterion("policy in", values, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyNotIn(List<String> values) {
+            addCriterion("policy not in", values, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyBetween(String value1, String value2) {
+            addCriterion("policy between", value1, value2, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andPolicyNotBetween(String value1, String value2) {
+            addCriterion("policy not between", value1, value2, "policy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureIsNull() {
+            addCriterion("culture is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureIsNotNull() {
+            addCriterion("culture is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureEqualTo(String value) {
+            addCriterion("culture =", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureNotEqualTo(String value) {
+            addCriterion("culture <>", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureGreaterThan(String value) {
+            addCriterion("culture >", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureGreaterThanOrEqualTo(String value) {
+            addCriterion("culture >=", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureLessThan(String value) {
+            addCriterion("culture <", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureLessThanOrEqualTo(String value) {
+            addCriterion("culture <=", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureLike(String value) {
+            addCriterion("culture like", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureNotLike(String value) {
+            addCriterion("culture not like", value, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureIn(List<String> values) {
+            addCriterion("culture in", values, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureNotIn(List<String> values) {
+            addCriterion("culture not in", values, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureBetween(String value1, String value2) {
+            addCriterion("culture between", value1, value2, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andCultureNotBetween(String value1, String value2) {
+            addCriterion("culture not between", value1, value2, "culture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIsNull() {
+            addCriterion("price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIsNotNull() {
+            addCriterion("price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceEqualTo(String value) {
+            addCriterion("price =", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotEqualTo(String value) {
+            addCriterion("price <>", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThan(String value) {
+            addCriterion("price >", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThanOrEqualTo(String value) {
+            addCriterion("price >=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThan(String value) {
+            addCriterion("price <", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThanOrEqualTo(String value) {
+            addCriterion("price <=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLike(String value) {
+            addCriterion("price like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotLike(String value) {
+            addCriterion("price not like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIn(List<String> values) {
+            addCriterion("price in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotIn(List<String> values) {
+            addCriterion("price not in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceBetween(String value1, String value2) {
+            addCriterion("price between", value1, value2, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotBetween(String value1, String value2) {
+            addCriterion("price not between", value1, value2, "price");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -7,7 +7,7 @@
 	</head>
 
 	<body>
-		<h3 class="vipright-title">修改头像</h3>
+		<!--		<h3 class="vipright-title">修改头像</h3>
 		<form action="#" method="get">
 			<dl class="vip-touxiang">
 				<dt><img src="images/tx.jpg" width="100" height="100" /></dt>
@@ -20,24 +20,25 @@
 				</dd>
 				<div class="clearfix"></div>
 			</dl>
-			<!--vip-touxiang/-->
-		</form>
+			
+		</form>-->
 		<h3 class="vipright-title">修改资料</h3>
 		<table class="grinfo">
 			<tbody>
 				<tr>
+					<th><span class="red">*</span> 姓名：</th>
+					<td>
+						<input class="inp inw" type="text" id="title" value="" maxlength="14">
+					</td>
+				</tr>
+				<tr>
 					<th>手机号：</th>
-					<td> <strong>18521032517</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+					<td> <strong>*</strong> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="javascript:;"><span style="color:#888;cursor:pointer">(修改手机号)</span></a>
 					</td>
 				</tr>
-				<tr>
-					<th><span class="red">*</span> 昵称：</th>
-					<td>
-						<input class="inp inw" type="text" id="title" value="185****2517" maxlength="14">
-					</td>
-				</tr>
-				<tr>
+
+				<!--				<tr>
 					<th><span class="red">*</span> 性 &nbsp; &nbsp;别：</th>
 					<td>
 						<input type="radio" value="2" id="rbSex1" name="sex">
@@ -46,29 +47,29 @@
 						<label for="rbSex2">男</label>
 						<span id="Sex_Tip"></span>
 					</td>
-				</tr>
-				<tr>
+				</tr>-->
+				<!--				<tr>
 					<th><span class="red"></span> 年 &nbsp; &nbsp;龄：</th>
 					<td>
 						<input class="inp inw" type="text" id="age" value="0" onkeyup="this.value=this.value.replace(/[^\d]/g,'')">
 					</td>
-				</tr>
+				</tr>-->
 
 				<tr>
-					<th>&nbsp;Q &nbsp; &nbsp;Q：</th>
+					<th>E-mail:</th>
 					<td>
-						<input class="inp inw" type="text" maxlength="15" value="" id="qq" onkeyup="return ValidateNumber(this,value)">
+						<input class="inp inw" type="text" maxlength="15" value="" id="email" onkeyup="return ValidateNumber(this,value)">
 					</td>
 				</tr>
 
-				<tr>
+				<!--				<tr>
 					<th valign="top">个性签名：</th>
 					<td>
 						<textarea id="sign" class="grtextarea"></textarea>
 						<br>
 						<span class="fgrey">(128字符以内)</span>
 					</td>
-				</tr>
+				</tr>-->
 				<tr>
 					<th>&nbsp;</th>
 					<td colspan="2">

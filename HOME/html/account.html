@@ -19,7 +19,7 @@
 						</dd>
 						<dt class="vipIcon1">我的刷单</dt>
 						<dd>
-							<a id="guanzhu">关注商家</a>
+							<a id="guanzhu"></a>
 							<a id="joinus">加入我们</a>
 							<a id="single">社区自由经纪人</a>
 						</dd>
@@ -37,8 +37,12 @@
 			<div class="clearfix"></div>
 		</div>
 		<!--width1190/-->
+		<script src="js/jquery.cookie.js"></script>
 		<script type="text/javascript">
 			$(function() {
+				
+				var secretid_ck = $.cookie('secretid'); // 读取 cookie
+				//alert(secretid_ck);
 
 				$("#single").click(function() {
 					$("#vip-right").load("html/subhtml/single.html");
@@ -60,7 +64,7 @@
 					$("#vip-right").load("html/subhtml/joinus.html");
 				});
 
-				
+				$('#user').click();
 
 			})
 		</script>

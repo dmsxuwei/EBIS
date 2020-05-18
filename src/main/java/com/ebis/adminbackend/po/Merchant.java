@@ -2,10 +2,10 @@ package com.ebis.adminbackend.po;
 
 import java.util.Date;
 
-public class CCompanyInformation {
-    private String companyid;
+public class Merchant {
+    private String merchantid;
 
-    private String companyname;
+    private String merchantname;
 
     private String type;
 
@@ -37,20 +37,20 @@ public class CCompanyInformation {
 
     private String culture;
 
-    public String getCompanyid() {
-        return companyid;
+    public String getMerchantid() {
+        return merchantid;
     }
 
-    public void setCompanyid(String companyid) {
-        this.companyid = companyid == null ? null : companyid.trim();
+    public void setMerchantid(String merchantid) {
+        this.merchantid = merchantid == null ? null : merchantid.trim();
     }
 
-    public String getCompanyname() {
-        return companyname;
+    public String getMerchantname() {
+        return merchantname;
     }
 
-    public void setCompanyname(String companyname) {
-        this.companyname = companyname == null ? null : companyname.trim();
+    public void setMerchantname(String merchantname) {
+        this.merchantname = merchantname == null ? null : merchantname.trim();
     }
 
     public String getType() {

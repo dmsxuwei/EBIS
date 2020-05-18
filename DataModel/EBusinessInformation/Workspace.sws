@@ -4,9 +4,13 @@
 
 <Workspace>
 	<Local Expanded="Yes">
+		<Model Expanded="Yes" ID="{52BDE210-2808-4FE1-88A5-77AED6314845}" Loaded="No" Name="EBusinessInformation" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="EBusinessInformation.prj"/>
+		<Model Expanded="Yes" ID="{FFBC217A-62E0-4E9D-BAA1-12E85BF42FA6}" Loaded="No" Name="chefus" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="../../../chefus/DataModel/chefus/chefus.prj"/>
+		<Model Expanded="Yes" ID="{FFBC217A-62E0-4E9D-BAA1-12E85BF42FA6}" Name="chefus" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/users/administrator/desktop/chefus/workspace/chefus/chefus_db/chefus.prj"/>
+		<Model Expanded="Yes" ID="{FFBC217A-62E0-4E9D-BAA1-12E85BF42FA6}" Loaded="No" Name="chefus" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/Users/Administrator/Desktop/chefus/workspace/chefus/chefus_db/chefus.prj"/>
+		<Model ID="{52BDE210-2808-4FE1-88A5-77AED6314845}" Loaded="No" Name="EBusinessInformation" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="file:///E|/新建文件夹 (2)/EBIS/DataModel/EBusinessInformation/EBusinessInformation.prj"/>
+		<Model Expanded="Yes" ID="{52BDE210-2808-4FE1-88A5-77AED6314845}" Loaded="No" Name="EBusinessInformation" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="EBusinessInformation.prj"/>
 		<Model Expanded="Yes" ID="{52BDE210-2808-4FE1-88A5-77AED6314845}" Name="EBusinessInformation" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="EBusinessInformation.prj"/>
-		<Model Expanded="Yes" ID="{FFBC217A-62E0-4E9D-BAA1-12E85BF42FA6}" Loaded="No" Name="chefus" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="../../../chefus/DataModel/chefus/chefus.prj"/>
-		<Model Expanded="Yes" ID="{FFBC217A-62E0-4E9D-BAA1-12E85BF42FA6}" Loaded="No" Name="chefus" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="../../../chefus/DataModel/chefus/chefus.prj"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

@@ -27,11 +27,11 @@
         	<input type="checkbox" />
             <b class="left">已阅读并同意<a href="#">《用户协议》</a></b>
         </p>-->
-					<p class="clearfix"><input class="submit" type="submit" value="立即注册" /></p>
+					<p class="clearfix"><input class="submit" type="button" value="立即注册" onclick="register()"/></p>
 				</form>
 				<div class="reg-logo-right">
 					<h3>如果您已有账号，请</h3>
-					<a href="login.html" class="logo-a">立即登录</a>
+					<a onclick="golog()" class="logo-a" ">立即登录</a>
 				</div>
 				<!--reg-logo-right/-->
 				<div class="clears"></div>
@@ -39,6 +39,43 @@
 			<!--reg-logo/-->
 		</div>
 		<!--width1190/-->
+
+		<script type="text/javascript">
+			var url_register = 'user/register';
+
+			function register() {
+				$.ajax({
+					url: base_url + url_register,
+					type: 'post', //提交的方式
+					dataType: 'json',
+					async: true,
+					data: {
+						username: $('#agent').val(),
+						password: $('#password').val()
+					},
+					error: function(request) { //失败的话
+						$.messager.alert('ERROR', 'Connection error');
+					},
+					success: function(result) {
+
+						
+						if(result.code==200){
+							//alert('注册成功');
+							//$.messager.alert('提示', '注册成功');
+							$("#bodycontent").load("html/login.html");
+						}
+
+					}
+				});
+
+			}
+			
+			
+			function golog(){
+				$("#bodycontent").load("html/login.html");
+			}
+		</script>
+
 	</body>
 
 </html>

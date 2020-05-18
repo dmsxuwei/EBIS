@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/5/13 21:40:34                           */
+/* Created on:     2020/5/17 0:06:44                            */
 /*==============================================================*/
 
 
@@ -14,7 +14,9 @@ drop table if exists a_user_role;
 
 drop table if exists advertising;
 
-drop table if exists c_company_information;
+drop table if exists community;
+
+drop table if exists merchant;
 
 drop table if exists monitor;
 
@@ -88,18 +90,37 @@ create table advertising
    location             varchar(100),
    rank                 int default 0,
    createtime           datetime,
+   policy               varchar(255),
+   culture              varchar(255),
+   price                varchar(255),
    primary key (advertisingid)
 );
 
 alter table advertising comment 'advertising';
 
 /*==============================================================*/
-/* Table: c_company_information                                 */
+/* Table: community                                             */
 /*==============================================================*/
-create table c_company_information
+create table community
 (
-   companyid            varchar(32) not null,
-   companyname          varchar(50),
+   communityid          varchar(32) not null,
+   companyid            varchar(32),
+   image                varchar(100),
+   policy               varchar(255),
+   rank                 int default 0,
+   createtime           datetime,
+   primary key (communityid)
+);
+
+alter table community comment '社区表';
+
+/*==============================================================*/
+/* Table: merchant                                              */
+/*==============================================================*/
+create table merchant
+(
+   merchantid           varchar(32) not null,
+   merchantname         varchar(50),
    type                 varchar(20) comment '淘宝，京东',
    image                varchar(100),
    tel                  varchar(20),
@@ -115,10 +136,10 @@ create table c_company_information
    reputation           int,
    policy               varchar(255),
    culture              varchar(255),
-   primary key (companyid)
+   primary key (merchantid)
 );
 
-alter table c_company_information comment '商家信息表';
+alter table merchant comment '商家信息表';
 
 /*==============================================================*/
 /* Table: monitor                                               */
@@ -168,7 +189,7 @@ alter table a_user_role add constraint FK_Reference_2 foreign key (roleid)
       references a_role (roleid) on delete restrict on update restrict;
 
 alter table advertising add constraint FK_Reference_6 foreign key (companyid)
-      references c_company_information (companyid) on delete restrict on update restrict;
+      references merchant (merchantid) on delete restrict on update restrict;
 
 alter table monitor add constraint FK_Reference_5 foreign key (userid)
       references a_user (userid) on delete restrict on update restrict;

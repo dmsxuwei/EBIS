@@ -26,7 +26,7 @@ public class AdvertisingService {
 	
 	
 
-	public PageInfo<Advertising> selectByExample(Integer pageNo, Integer pageSize) {
+	public PageInfo<Advertising> selectByExample(Integer pageNo, Integer pageSize,String location) {
 		pageNo = pageNo == null ? 1 : pageNo;
 		pageSize = pageSize == null ? 10 : pageSize;
 		PageHelper.startPage(pageNo, pageSize);
@@ -34,18 +34,19 @@ public class AdvertisingService {
 		AdvertisingExample example = new AdvertisingExample();
 		// example.setOrderByClause("rank desc");
 		Criteria criteria = example.createCriteria();
-
+		if(location!=null && !"".equals(location))criteria.andLocationEqualTo(location);
 		List<Advertising> list = advertisingMapper.selectByExample(example);
+		
 		PageInfo<Advertising> page = new PageInfo<Advertising>(list);
 		return page;
 	}
 
-	public List<Advertising> selectAllCompanyinformation(String type) {
+	public List<Advertising> selectAllAdvertising() {
 		AdvertisingExample example = new AdvertisingExample();
 		// example.setOrderByClause("rank desc");
 		Criteria criteria = example.createCriteria();
 		// criteria.andTypeEqualTo(type);
-		return advertisingMapper.selectByExample(example);
+		return advertisingMapper.selectByExample(null);
 	}
 
 	public int insertSelective(Advertising record) {

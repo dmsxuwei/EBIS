@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ebis.adminbackend.dao.CommunityMapper" >
+  <resultMap id="BaseResultMap" type="com.ebis.adminbackend.po.Community" >
+    <id column="communityid" property="communityid" jdbcType="VARCHAR" />
+    <result column="companyid" property="companyid" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="policy" property="policy" jdbcType="VARCHAR" />
+    <result column="rank" property="rank" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    communityid, companyid, image, policy, rank, createtime, type
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ebis.adminbackend.po.CommunityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from community
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from community
+    where communityid = #{communityid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from community
+    where communityid = #{communityid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ebis.adminbackend.po.CommunityExample" >
+    delete from community
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ebis.adminbackend.po.Community" >
+    insert into community (communityid, companyid, image, 
+      policy, rank, createtime, 
+      type)
+    values (#{communityid,jdbcType=VARCHAR}, #{companyid,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{policy,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ebis.adminbackend.po.Community" >
+    insert into community
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="communityid != null" >
+        communityid,
+      </if>
+      <if test="companyid != null" >
+        companyid,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="policy != null" >
+        policy,
+      </if>
+      <if test="rank != null" >
+        rank,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="communityid != null" >
+        #{communityid,jdbcType=VARCHAR},
+      </if>
+      <if test="companyid != null" >
+        #{companyid,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="policy != null" >
+        #{policy,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null" >
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ebis.adminbackend.po.CommunityExample" resultType="java.lang.Integer" >
+    select count(*) from community
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update community
+    <set >
+      <if test="record.communityid != null" >
+        communityid = #{record.communityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyid != null" >
+        companyid = #{record.companyid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.image != null" >
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policy != null" >
+        policy = #{record.policy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rank != null" >
+        rank = #{record.rank,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update community
+    set communityid = #{record.communityid,jdbcType=VARCHAR},
+      companyid = #{record.companyid,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
+      policy = #{record.policy,jdbcType=VARCHAR},
+      rank = #{record.rank,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      type = #{record.type,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ebis.adminbackend.po.Community" >
+    update community
+    <set >
+      <if test="companyid != null" >
+        companyid = #{companyid,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="policy != null" >
+        policy = #{policy,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null" >
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where communityid = #{communityid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ebis.adminbackend.po.Community" >
+    update community
+    set companyid = #{companyid,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      policy = #{policy,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR}
+    where communityid = #{communityid,jdbcType=VARCHAR}
+  </update>
+</mapper>

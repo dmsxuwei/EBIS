@@ -22,11 +22,11 @@
         	<input type="checkbox" />
             <b class="left">已阅读并同意<a href="#">《用户协议》</a></b>
         </p>-->
-					<p class="clearfix"><input class="submit" type="submit" value="立即登录" /></p>
+					<p class="clearfix"><input class="submit" type="button" value="立即登录" onclick="login()" /></p>
 				</form>
 				<div class="reg-logo-right">
 					<h3>如果您没有账号，请</h3>
-					<a href="reg.html" class="logo-a">立即注册</a>
+					<a onclick="goReg()" class="logo-a">立即注册</a>
 				</div>
 				<!--reg-logo-right/-->
 				<div class="clears"></div>
@@ -34,6 +34,46 @@
 			<!--reg-logo/-->
 		</div>
 		<!--width1190/-->
+		<script src="js/jquery.cookie.js"></script>
+		<script type="text/javascript">
+			var url_login = 'user/login';
+
+			function login() {
+				$.ajax({
+					url: base_url + url_login,
+					type: 'post', //提交的方式
+					dataType: 'json',
+					async: true,
+					data: {
+						username: $('#agent').val(),
+						password: $('#password').val()
+					},
+					error: function(request) { //失败的话
+						$.messager.alert('ERROR', 'Connection error');
+					},
+					success: function(result) {
+
+						if(result.code == 200) {
+							//alert(result.result);
+							if(result.result != null) {
+								$.cookie('secretid', result.result, {
+									path: '/'
+								}); // 创建 cookie
+								$("#bodycontent").load("html/account.html");
+							}
+
+						}
+
+					}
+				});
+
+			}
+
+			function goReg() {
+				$("#bodycontent").load("html/reg.html");
+			}
+		</script>
+
 	</body>
 
 </html>
