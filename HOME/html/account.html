@@ -19,9 +19,9 @@
 						</dd>
 						<dt class="vipIcon1">我的刷单</dt>
 						<dd>
-							<a id="guanzhu"></a>
+<!--							<a id="guanzhu"></a>
 							<a id="joinus">加入我们</a>
-							<a id="single">社区自由经纪人</a>
+							<a id="single">社区自由经纪人</a>-->
 						</dd>
 					</dl>
 				</div>
@@ -42,7 +42,7 @@
 			$(function() {
 				
 				var secretid_ck = $.cookie('secretid'); // 读取 cookie
-				//alert(secretid_ck);
+				alert(secretid_ck);
 
 				$("#single").click(function() {
 					$("#vip-right").load("html/subhtml/single.html");

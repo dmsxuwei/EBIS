@@ -105,6 +105,7 @@ public class MechantController extends BaseController {
 			@RequestParam(name = "merchantname", required = true) @NotBlank @Size(max = 200) String merchantname,
 			@RequestParam(name = "url", required = true) @NotBlank @Size(max = 200) String url,
 			@RequestParam(name = "type", required = true) @NotBlank @Size(max = 200) String type,
+			@RequestParam(name = "servertype", required = true) @NotBlank @Size(max = 200) String servertype,
 			@RequestParam(name = "tel", required = false) @Size(max = 200) String tel,
 			@RequestParam(name = "rank", required = false) @Size(max = 200) String rank,
 			@RequestParam(name = "price", required = false) @Size(max = 200) String price,
@@ -120,6 +121,7 @@ public class MechantController extends BaseController {
 		merchant.setMerchantname(merchantname);
 		merchant.setUrl(url);
 		merchant.setType(type);
+		merchant.setServertype(servertype);
 		merchant.setTel(tel);
 		merchant.setPrice((new Double(Double.parseDouble(price) * 100)).intValue());
 		merchant.setPolicy(policy);

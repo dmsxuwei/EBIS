@@ -48,8 +48,8 @@ public class CommunityController extends BaseController {
 	 */
 	@RequestMapping(value = "/getCommunitysForWeb", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBody getCommunitysByPage() throws Exception {
-		List<Community> communitys= communityService.selectAllCommunity();
+	public ResultBody getCommunitysByPage(@RequestParam(name = "type", required=false) String type) throws Exception {
+		List<Community> communitys= communityService.selectCommunityByType( type);
 		return ResultBody.success(communitys);
 	}
 

@@ -41,12 +41,12 @@ public class AdvertisingService {
 		return page;
 	}
 
-	public List<Advertising> selectAllAdvertising() {
+	public List<Advertising> selectlAdvertisingByLocation(String location) {
 		AdvertisingExample example = new AdvertisingExample();
 		// example.setOrderByClause("rank desc");
 		Criteria criteria = example.createCriteria();
-		// criteria.andTypeEqualTo(type);
-		return advertisingMapper.selectByExample(null);
+		criteria.andLocationEqualTo(location);
+		return advertisingMapper.selectByExample(example);
 	}
 
 	public int insertSelective(Advertising record) {

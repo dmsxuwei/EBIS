@@ -269,7 +269,7 @@
 				dataType: 'json',
 				async: true,
 				data: {
-					msg: '1'
+					type: '4'
 				},
 				error: function(request) { //失败的话
 					$.messager.alert('ERROR', 'Connection error');
@@ -465,29 +465,93 @@
 				type: 'post', //提交的方式
 				dataType: 'json',
 				async: true,
-				/*				data: {
-									type: '4'
-								},*/
+				/*1 社区图*/
+				data: {
+					type: '1'
+				},
 				error: function(request) { //失败的话
 					$.messager.alert('ERROR', 'Connection error');
 				},
 				success: function(result) {
 					if(result.code == 200) {
 						$("#cimg1").attr("src", pic_path + result.result[0].image);
-						$("#cimg2").attr("src", pic_path + result.result[1].image);
-						$("#cimg3").attr("src", pic_path + result.result[2].image);
-						$("#cimg4").attr("src", pic_path + result.result[3].image);
-						
 						$("#cad1").html(result.result[0].policy);
-						$("#cad2").html(result.result[1].policy);
-						$("#cad3").html(result.result[2].policy);
-						$("#cad4").html(result.result[3].policy);
-						
+					} else {
+						$.messager.alert('ERROR', result.message);
+					}
+				}
+			});
+			$.ajax({
+				url: base_url + url_GetCommunityObject,
+				type: 'post', //提交的方式
+				dataType: 'json',
+				async: true,
+				/*1 社区图*/
+				data: {
+					type: '2'
+				},
+				error: function(request) { //失败的话
+					$.messager.alert('ERROR', 'Connection error');
+				},
+				success: function(result) {
+					if(result.code == 200) {
+						$("#cimg2").attr("src", pic_path + result.result[0].image);
+
+						$("#cad2").html(result.result[0].policy);
 
 					} else {
 						$.messager.alert('ERROR', result.message);
 					}
+				}
+			});
 
+			$.ajax({
+				url: base_url + url_GetCommunityObject,
+				type: 'post', //提交的方式
+				dataType: 'json',
+				async: true,
+				/*1 社区图*/
+				data: {
+					type: '3'
+				},
+				error: function(request) { //失败的话
+					$.messager.alert('ERROR', 'Connection error');
+				},
+				success: function(result) {
+					if(result.code == 200) {
+
+						$("#cimg3").attr("src", pic_path + result.result[0].image);
+
+						$("#cad3").html(result.result[0].policy);
+
+					} else {
+						$.messager.alert('ERROR', result.message);
+					}
+				}
+			});
+
+			$.ajax({
+				url: base_url + url_GetCommunityObject,
+				type: 'post', //提交的方式
+				dataType: 'json',
+				async: true,
+				/*1 社区图*/
+				data: {
+					type: '4'
+				},
+				error: function(request) { //失败的话
+					$.messager.alert('ERROR', 'Connection error');
+				},
+				success: function(result) {
+					if(result.code == 200) {
+
+						$("#cimg4").attr("src", pic_path + result.result[0].image);
+
+						$("#cad4").html(result.result[0].policy);
+
+					} else {
+						$.messager.alert('ERROR', result.message);
+					}
 				}
 			});
 		</script>

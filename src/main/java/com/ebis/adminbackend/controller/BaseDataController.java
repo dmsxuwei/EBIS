@@ -52,4 +52,16 @@ public class BaseDataController {
 		return json;
 	}
 
+	@RequestMapping(value = "/getServertype", method = RequestMethod.POST)
+	@ResponseBody
+	public String getServertype(HttpServletRequest request) {
+		String json="["
+				+ "{\"id\":\"1\",\"text\":\"爆款打造\"},"
+				+ "{\"id\":\"2\",\"text\":\"流量优化\"},"
+				+ "{\"id\":\"3\",\"text\":\"运营支持\"}"
+				
+				+ "]";
+		return json;
+	}
+
 }

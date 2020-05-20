@@ -17,6 +17,9 @@ public class BaseController {
 	@Value("${picture_path}")
 	protected String picture_path;
 	
+	@Value("${system_email}")
+	protected String system_email;//
+	
 	/*@Autowired
 	protected FeignService feignService;*/
 	

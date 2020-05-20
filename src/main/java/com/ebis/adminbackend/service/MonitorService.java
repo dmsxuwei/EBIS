@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.ebis.adminbackend.dao.MonitorMapper;
 import com.ebis.adminbackend.po.Monitor;
 import com.ebis.adminbackend.po.MonitorExample;
+import com.ebis.adminbackend.po.MonitorExample.Criteria;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -26,14 +27,20 @@ public class MonitorService {
 		return page;
 	}
 
-
+	public List<Monitor> selectByIpAddress(String  ipaddress){
+		MonitorExample example =new MonitorExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andIpadressEqualTo(ipaddress);
+		return monitorMapper.selectByExample(example);
+	}
+	
     public int insert(Monitor record) {
     	return monitorMapper.insert(record);
     }
 
 
 
-    List<Monitor> selectByExample(MonitorExample example){
+	public List<Monitor> selectByExample(MonitorExample example){
     	return monitorMapper.selectByExample(example);
     }
 

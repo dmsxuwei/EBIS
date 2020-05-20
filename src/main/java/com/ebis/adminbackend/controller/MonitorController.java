@@ -1,5 +1,6 @@
 package com.ebis.adminbackend.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -33,17 +34,39 @@ public class MonitorController {
 	@Autowired
 	private MonitorService monitorService;
 
+	
+/*	+ "{\"id\":\"1\",\"text\":\"名片点击\"},"
+	+ "{\"id\":\"2\",\"text\":\"广告点击\"},"
+	+ "{\"id\":\"3\",\"text\":\"登陆事件\"},"
+	+ "{\"id\":\"4\",\"text\":\"首页浏览\"},"
+	+ "{\"id\":\"5\",\"text\":\"其它\"}"*/
+	
 	@RequestMapping(value = "/accessRecord", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBody accessRecord(HttpServletRequest request, @RequestParam(name = "msg",required=false) String msg)
+	public ResultBody accessRecord(HttpServletRequest request, @RequestParam(name = "type",required=true) String type)
 			throws Exception {
 		// 获取IP地址
 		String ipAddress = IpUtil.getIpAddr(request);
+		
+		List<Monitor> monitos=monitorService.selectByIpAddress(ipAddress);
+		if(monitos.size()>0) {
+			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+			Date eventdate=monitos.get(0).getEventtime();
+			String eventstr=f.format(eventdate);
+			Date nowdate=new Date();
+			String nowdatestr=f.format(nowdate);
+			if(nowdatestr.equals(eventstr)) {
+				System.out.println("当天重复访问");
+				return ResultBody.success("当天重复访问");
+			}
+		}
+		
 		log.info(ipAddress);
 		Monitor record=new Monitor();
 		record.setMonitorid(GenerateID.getUUID());
 		record.setIpadress(ipAddress);
 		record.setIsregister("0");
+		record.setEventtype(type);
 		record.setEventtime(new Date());
 		
 		int result = monitorService.insert(record);

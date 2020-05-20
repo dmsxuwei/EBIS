@@ -41,12 +41,12 @@ public class CommunityService {
 		return page;
 	}
 
-	public List<Community> selectAllCommunity() {
+	public List<Community> selectCommunityByType(String type) {
 		CommunityExample example = new CommunityExample();
 		// example.setOrderByClause("rank desc");
 		Criteria criteria = example.createCriteria();
-		// criteria.andTypeEqualTo(type);
-		return communityMapper.selectByExample(null);
+		criteria.andTypeEqualTo(type);
+		return communityMapper.selectByExample(example);
 	}
 
 	public int insertSelective(Community record) {

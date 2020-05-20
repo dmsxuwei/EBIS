@@ -51,7 +51,8 @@ public class AdvertisingController extends BaseController {
 	@ResponseBody
 	public ResultBody getAdvertisingsByPage(
 			@RequestParam(name = "location") String location) throws Exception {
-		List<Advertising> advertisings= advertisingService.selectAllAdvertising();
+		
+		List<Advertising> advertisings= advertisingService.selectlAdvertisingByLocation( location);
 		return ResultBody.success(advertisings);
 	}
 

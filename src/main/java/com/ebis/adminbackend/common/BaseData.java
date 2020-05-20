@@ -24,6 +24,14 @@ public class BaseData {
 		return merchantType;
 	}
 	
+	public static Map<String,String> merchantServiceType(){
+		Map<String,String> merchantType=new HashMap<String,String>();
+		merchantType.put("1", "爆款打造");
+		merchantType.put("2", "流量优化");
+		merchantType.put("3", "运营支持");
+		return merchantType;
+	}
+	
 	public static Map<String,String> getWeek(){
 		Map<String,String> week=new HashMap<String,String>();
 		week.put("1", "Monday");
