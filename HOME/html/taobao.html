@@ -14,13 +14,13 @@
 					<tr>
 						<th>服务类型：</th>
 						<td>
-							<a href="javascript:;" class="pro-cur">不限</a>
-							<a href="javascript:;">爆款打造</a>
-							<a href="javascript:;">流量优化</a>
-							<a href="javascript:;">运营支持</a>
+							<a id="unlimited" href="javascript:;" class="pro-cur">不限</a>
+							<a id="hotstyle" href="javascript:;">爆款打造</a>
+							<a id="flow" href="javascript:;">流量优化</a>
+							<a id="operation" href="javascript:;">运营支持</a>
 						</td>
 					</tr>
-					<tr>
+					<!--					<tr>
 						<th>价格：</th>
 						<td>
 							<a href="javascript:;" class="pro-cur">不限</a>
@@ -31,8 +31,8 @@
 							<input type="text" class="protext" /> - <input type="text" class="protext" /> 元
 							<input type="submit" class="proSub" value="确定" />
 						</td>
-					</tr>
-	<!--				<tr>
+					</tr>-->
+					<!--				<tr>
 						<th>资质：</th>
 						<td>
 							<a href="javascript:;" class="pro-cur">不限</a>
@@ -112,8 +112,41 @@
 
 			var url_GetMerchantObject = 'merchant/getMerchantsByPage';
 			var url_accessRecord = 'monitor/accessRecord';
-			
-			var url_GetAdvertisingsForWeb='advertising/getAdvertisingsForWeb';
+
+			var url_GetAdvertisingsForWeb = 'advertising/getAdvertisingsForWeb';
+
+			$('#unlimited').click(function() {
+				$('#hotstyle').removeClass("pro-cur");
+				$('#unlimited').addClass("pro-cur");
+				$('#flow').removeClass("pro-cur");
+				$('#operation').removeClass("pro-cur");
+				requestMerchant(1, rows);
+			});
+
+
+			$('#hotstyle').click(function() {
+				$('#hotstyle').addClass("pro-cur");
+				$('#unlimited').removeClass("pro-cur");
+				$('#flow').removeClass("pro-cur");
+				$('#operation').removeClass("pro-cur");
+				requestMerchant(1, rows);
+			});
+
+			$('#flow').click(function() {
+				$('#hotstyle').removeClass("pro-cur");
+				$('#unlimited').removeClass("pro-cur");
+				$('#flow').addClass("pro-cur");
+				$('#operation').removeClass("pro-cur");
+				requestMerchant(1, rows);
+			});
+
+			$('#operation').click(function() {
+				$('#hotstyle').removeClass("pro-cur");
+				$('#unlimited').removeClass("pro-cur");
+				$('#flow').removeClass("pro-cur");
+				$('#operation').addClass("pro-cur");
+				requestMerchant(1, rows);
+			});
 
 			var rows = 2;
 
@@ -195,20 +228,20 @@
 					var img = result.result.rows[i].image;
 					var txt1 = "<dl>" +
 						"<dt>" +
-						"<a href=\"proinfo.html\">" +
+						"<a href="+result.result.rows[i].url+">" +
 						"<img src=\"" + pic_path + img + "\" width=\"286\" height=\"188\" />" +
 						"</a>" +
 						"</dt>" +
 						"<dd>" +
-						"<h3><a href=\"proinfo.html\">"+result.result.rows[i].policy+"</a></h3>" +
+						"<h3><a href="+result.result.rows[i].url+">" + result.result.rows[i].policy + "</a></h3>" +
 						"<div class=\"pro-wei\">" +
 						"<img src=\"images/weizhi.png\" width=\"12\" height=\"16\" /> " +
-						"<strong class=\"red\">"+ result.result.rows[i].merchantname+"</strong>" +
+						"<strong class=\"red\">" + result.result.rows[i].merchantname + "</strong>" +
 						"</div>" +
-						"<div class=\"pro-fang\">"+result.result.rows[i].culture+"</div>" +
+						"<div class=\"pro-fang\">" + result.result.rows[i].culture + "</div>" +
 						"<div class=\"pra-fa\">发布时间：2015-12-03</div>" +
 						"</dd>" +
-						"<div class=\"price\">¥ <strong>"+result.result.rows[i].price/100+"</strong><span class=\"font12\">元/单</span></div>" +
+						"<div class=\"price\">¥ <strong>" + result.result.rows[i].price / 100 + "</strong><span class=\"font12\">元/单</span></div>" +
 						"<div class=\"clears\"></div>" +
 						"</dl>"; // 以 HTML 创建新元素
 					$("#merchantdiv").append(txt1); // 追加新元素
@@ -227,17 +260,17 @@
 					$.messager.alert('ERROR', 'Connection error');
 				},
 				success: function(result) {
-					
+
 					for(i = 0; i < result.result.length; i++) {
 						var img = result.result[i].image;
 						var txt1 = "<dl><dt>" +
-							"<a href=\"proinfo.html\">" +
+							"<a href="+result.result[i].url+">" +
 							"<img src=\"" + pic_path + img + "\" width=\"250\" height=\"140\" />" +
-							"</a>"+
+							"</a>" +
 							"</dt><dd>" +
-							"<h3><a href=\"proinfo.html\">"+result.result[i].policy+"</a></h3>" +
-							"<div class=\"pro-fang\">"+result.result[i].culture+"</div>" +
-							"<div class=\"right-price\">"+result.result[i].price/100+"元/单</div>" +
+							"<h3><a href="+result.result[i].url+">" + result.result[i].policy + "</a></h3>" +
+							"<div class=\"pro-fang\">" + result.result[i].culture + "</div>" +
+							"<div class=\"right-price\">" + result.result[i].price / 100 + "元/单</div>" +
 							"</dd></dl>";
 						$("#advertising").append(txt1); // 追加新元素
 					}

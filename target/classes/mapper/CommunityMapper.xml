@@ -9,6 +9,7 @@
     <result column="rank" property="rank" jdbcType="INTEGER" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    communityid, companyid, image, policy, rank, createtime, type
+    communityid, companyid, image, policy, rank, createtime, type, url
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ebis.adminbackend.po.CommunityExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.ebis.adminbackend.po.Community" >
     insert into community (communityid, companyid, image, 
       policy, rank, createtime, 
-      type)
+      type, url)
     values (#{communityid,jdbcType=VARCHAR}, #{companyid,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
       #{policy,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{type,jdbcType=VARCHAR})
+      #{type,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ebis.adminbackend.po.Community" >
     insert into community
@@ -133,6 +134,9 @@
       <if test="type != null" >
         type,
       </if>
+      <if test="url != null" >
+        url,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="communityid != null" >
@@ -155,6 +159,9 @@
       </if>
       <if test="type != null" >
         #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.type != null" >
         type = #{record.type,jdbcType=VARCHAR},
       </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       policy = #{record.policy,jdbcType=VARCHAR},
       rank = #{record.rank,jdbcType=INTEGER},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
-      type = #{record.type,jdbcType=VARCHAR}
+      type = #{record.type,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="type != null" >
         type = #{type,jdbcType=VARCHAR},
       </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
     </set>
     where communityid = #{communityid,jdbcType=VARCHAR}
   </update>
@@ -237,7 +251,8 @@
       policy = #{policy,jdbcType=VARCHAR},
       rank = #{rank,jdbcType=INTEGER},
       createtime = #{createtime,jdbcType=TIMESTAMP},
-      type = #{type,jdbcType=VARCHAR}
+      type = #{type,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
     where communityid = #{communityid,jdbcType=VARCHAR}
   </update>
 </mapper>

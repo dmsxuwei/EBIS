@@ -17,6 +17,8 @@ public class Community {
 
     private String type;
 
+    private String url;
+
     public String getCommunityid() {
         return communityid;
     }
@@ -71,5 +73,13 @@ public class Community {
 
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 }

@@ -21,6 +21,8 @@ public class Advertising {
 
     private String price;
 
+    private String url;
+
     public String getAdvertisingid() {
         return advertisingid;
     }
@@ -91,5 +93,13 @@ public class Advertising {
 
     public void setPrice(String price) {
         this.price = price == null ? null : price.trim();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 }

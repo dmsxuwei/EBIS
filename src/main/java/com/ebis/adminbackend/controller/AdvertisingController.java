@@ -84,6 +84,7 @@ public class AdvertisingController extends BaseController {
 	public ResultBody addMerchant(@RequestParam("file") MultipartFile file,
 			@RequestParam(name = "companyid", required = false)String companyid,
 			@RequestParam(name = "location", required = true) String location,
+			@RequestParam(name = "url", required = true) String url,
 			@RequestParam(name = "rank", required = false) String rank,
 			@RequestParam(name = "price", required = false) @Size(max = 200) String price,
 			@RequestParam(name = "policy", required = false) @Size(max = 200) String policy,
@@ -99,7 +100,7 @@ public class AdvertisingController extends BaseController {
 		if (companyid != null && !"".equals(companyid))advertising.setCompanyid(companyid);
 		
 		advertising.setLocation(location);
-		
+		advertising.setUrl(url);
 		if (rank == null || "".equals(rank)) {
 			advertising.setRank(0);
 		} else {

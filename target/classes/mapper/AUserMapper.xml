@@ -11,6 +11,7 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="QQ" property="qq" jdbcType="VARCHAR" />
     <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    userid, username, password, gender, name, phone, email, QQ, wechat
+    userid, username, password, gender, name, phone, email, QQ, wechat, createtime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ebis.adminbackend.po.AUserExample" >
     select
@@ -106,10 +107,12 @@
   <insert id="insert" parameterType="com.ebis.adminbackend.po.AUser" >
     insert into a_user (userid, username, password, 
       gender, name, phone, 
-      email, QQ, wechat)
+      email, QQ, wechat, 
+      createtime)
     values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{gender,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.ebis.adminbackend.po.AUser" >
     insert into a_user
@@ -141,6 +144,9 @@
       <if test="wechat != null" >
         wechat,
       </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
@@ -169,6 +175,9 @@
       </if>
       <if test="wechat != null" >
         #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -208,6 +217,9 @@
       <if test="record.wechat != null" >
         wechat = #{record.wechat,jdbcType=VARCHAR},
       </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -223,7 +235,8 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       QQ = #{record.qq,jdbcType=VARCHAR},
-      wechat = #{record.wechat,jdbcType=VARCHAR}
+      wechat = #{record.wechat,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -255,6 +268,9 @@
       <if test="wechat != null" >
         wechat = #{wechat,jdbcType=VARCHAR},
       </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
@@ -267,7 +283,8 @@
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       QQ = #{qq,jdbcType=VARCHAR},
-      wechat = #{wechat,jdbcType=VARCHAR}
+      wechat = #{wechat,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
 </mapper>

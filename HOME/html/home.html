@@ -93,8 +93,8 @@
 				<dl>
 					<dt style=""><a id="link1_p"><img id="img1_p" width="286" height="188" /></a></dt>
 					<dd>
-						<a id="url1">
-							<h3 id="com1_p"></h3></a>
+						<a id="url1" >
+							<h3 id="com1_p" ></h3></a>
 						<div id="tel1_p" class="hui"></div>
 					</dd>
 				</dl>
@@ -103,7 +103,7 @@
 					<dt style=""><a id="link2_p"><img id="img2_p" width="286" height="188" /></a></dt>
 					<dd>
 						<a id="url2_p">
-							<h3 id="com2_p"></h3></a>
+							<h3 id="com2_p" ></h3></a>
 						<div id="tel2" class="hui"></div>
 					</dd>
 				</dl>
@@ -171,57 +171,57 @@
 				</h2>
 			<div class="index-ershou">
 				<div class="in-er-left">
-					<a href="proinfo.html"><img src="images/fangt1.jpg" width="380" height="285" /></a>
+					<a ><img src="images/fangt1.jpg" width="380" height="285" /></a>
 					<div class="in-er-left-text"><strong class="fl">极速到位云招牌</strong><strong class="fr alignRight"></strong></div>
 				</div>
 				<!--in-er-left/-->
 				<div class="in-er-right">
 					<dl>
-						<dt><a href="proinfo.html"><img id="cimg1" width="150" height="115" /></a></dt>
+						<dt><a id="curl1" ><img id="cimg1" width="150" height="115" /></a></dt>
 						<dd>
-							<h3><a href="proinfo.html">淘宝社区</a></h3>
+							<h3><a >淘宝社区</a></h3>
 							<div id="cad1" class="in-er-right-text">
 								<!--【重要公告】论坛将于近期与千牛头条完成产品融合，我们将逐渐关闭论坛相关功能-->
 							</div>
 							<div class="price">
-								<a href="pro_er.html">更多&gt;&gt;</a>
+								<a >更多&gt;&gt;</a>
 							</div>
 						</dd>
 						<div class="clears"></div>
 					</dl>
 
 					<dl>
-						<dt><a href="proinfo.html"><img id="cimg2"  width="150" height="115" /></a></dt>
+						<dt><a id="curl2" ><img id="cimg2"  width="150" height="115" /></a></dt>
 						<dd>
-							<h3><a href="proinfo.html">京东社区</a></h3>
+							<h3><a >京东社区</a></h3>
 							<div id="cad2" class="in-er-right-text">
 							</div>
 							<div class="price">
-								<a href="pro_er.html">更多&gt;&gt;</a>
+								<a >更多&gt;&gt;</a>
 							</div>
 						</dd>
 						<div class="clears"></div>
 					</dl>
 					<dl>
-						<dt><a href="proinfo.html"><img id="cimg3" width="150" height="115" /></a></dt>
+						<dt><a id="curl3" ><img id="cimg3" width="150" height="115" /></a></dt>
 						<dd>
-							<h3><a href="proinfo.html">拼多多社区</a></h3>
+							<h3><a >拼多多社区</a></h3>
 							<div id="cad3" class="in-er-right-text">
 							</div>
 							<div class="price">
-								<a href="pro_er.html">更多&gt;&gt;</a>
+								<a >更多&gt;&gt;</a>
 							</div>
 						</dd>
 						<div class="clears"></div>
 					</dl>
 					<dl>
-						<dt><a href="proinfo.html"><img id="cimg4"  width="150" height="115" /></a></dt>
+						<dt><a id="curl4" ><img id="cimg4"  width="150" height="115" /></a></dt>
 						<dd>
-							<h3><a href="proinfo.html">短视频社区</a></h3>
+							<h3><a >短视频社区</a></h3>
 							<div id="cad4" class="in-er-right-text">
 							</div>
 							<div class="price">
-								<a href="pro_er.html">更多&gt;&gt;</a>
+								<a >更多&gt;&gt;</a>
 							</div>
 						</dd>
 						<div class="clears"></div>
@@ -297,28 +297,30 @@
 				},
 				success: function(result) {
 					if(result.code == 200) {
-
+						
+						$("#link1").attr("href", result.result[0].url);
 						$("#url1").attr("href", result.result[0].url);
 						$("#img1").attr("src", pic_path + result.result[0].image);
-						$("#com1").html(result.result[0].companyname);
+						$("#com1").html(result.result[0].merchantname);
 						$("#tel1").html(result.result[0].tel);
+						
 
 						$("#link2").attr("href", result.result[1].url);
 						$("#url2").attr("href", result.result[1].url);
 						$("#img2").attr("src", pic_path + result.result[1].image);
-						$("#com2").html(result.result[1].companyname);
+						$("#com2").html(result.result[1].merchantname);
 						$("#tel2").html(result.result[1].tel);
 
 						$("#link3").attr("href", result.result[2].url);
 						$("#url3").attr("href", result.result[2].url);
 						$("#img3").attr("src", pic_path + result.result[2].image);
-						$("#com3").html(result.result[2].companyname);
+						$("#com3").html(result.result[2].merchantname);
 						$("#tel3").html(result.result[2].tel);
 
 						$("#link4").attr("href", result.result[3].url);
 						$("#url4").attr("href", result.result[3].url);
 						$("#img4").attr("src", pic_path + result.result[3].image);
-						$("#com4").html(result.result[3].companyname);
+						$("#com4").html(result.result[3].merchantname);
 						$("#tel4").html(result.result[3].tel);
 
 					} else {
@@ -344,25 +346,25 @@
 
 						$("#url1_j").attr("href", result.result[0].url);
 						$("#img1_j").attr("src", pic_path + result.result[0].image);
-						$("#com1_j").html(result.result[0].companyname);
+						$("#com1_j").html(result.result[0].merchantname);
 						$("#tel1_j").html(result.result[0].tel);
 
 						$("#link2_j").attr("href", result.result[1].url);
 						$("#url2_j").attr("href", result.result[1].url);
 						$("#img2_j").attr("src", pic_path + result.result[1].image);
-						$("#com2_j").html(result.result[1].companyname);
+						$("#com2_j").html(result.result[1].merchantname);
 						$("#tel2_j").html(result.result[1].tel);
 
 						$("#link3_j").attr("href", result.result[2].url);
 						$("#url3_j").attr("href", result.result[2].url);
 						$("#img3_j").attr("src", pic_path + result.result[2].image);
-						$("#com3_j").html(result.result[2].companyname);
+						$("#com3_j").html(result.result[2].merchantname);
 						$("#tel3_j").html(result.result[2].tel);
 
 						$("#link4_j").attr("href", result.result[3].url);
 						$("#url4_j").attr("href", result.result[3].url);
 						$("#img4_j").attr("src", pic_path + result.result[3].image);
-						$("#com4_j").html(result.result[3].companyname);
+						$("#com4_j").html(result.result[3].merchantname);
 						$("#tel4_j").html(result.result[3].tel);
 
 					} else {
@@ -388,25 +390,25 @@
 
 						$("#url1_p").attr("href", result.result[0].url);
 						$("#img1_p").attr("src", pic_path + result.result[0].image);
-						$("#com1_p").html(result.result[0].companyname);
+						$("#com1_p").html(result.result[0].merchantname);
 						$("#tel1_p").html(result.result[0].tel);
 
 						$("#link2_p").attr("href", result.result[1].url);
 						$("#url2_p").attr("href", result.result[1].url);
 						$("#img2_p").attr("src", pic_path + result.result[1].image);
-						$("#com2_p").html(result.result[1].companyname);
+						$("#com2_p").html(result.result[1].merchantname);
 						$("#tel2_p").html(result.result[1].tel);
 
 						$("#link3_p").attr("href", result.result[2].url);
 						$("#url3_p").attr("href", result.result[2].url);
 						$("#img3_p").attr("src", pic_path + result.result[2].image);
-						$("#com3_p").html(result.result[2].companyname);
+						$("#com3_p").html(result.result[2].merchantname);
 						$("#tel3_p").html(result.result[2].tel);
 
 						$("#link4_p").attr("href", result.result[3].url);
 						$("#url4_p").attr("href", result.result[3].url);
 						$("#img4_p").attr("src", pic_path + result.result[3].image);
-						$("#com4_p").html(result.result[3].companyname);
+						$("#com4_p").html(result.result[3].merchantname);
 						$("#tel4_p").html(result.result[3].tel);
 
 					} else {
@@ -432,25 +434,25 @@
 
 						$("#url1_d").attr("href", result.result[0].url);
 						$("#img1_d").attr("src", pic_path + result.result[0].image);
-						$("#com1_d").html(result.result[0].companyname);
+						$("#com1_d").html(result.result[0].merchantname);
 						$("#tel1_d").html(result.result[0].tel);
 
 						$("#link2_d").attr("href", result.result[1].url);
 						$("#url2_d").attr("href", result.result[1].url);
 						$("#img2_d").attr("src", pic_path + result.result[1].image);
-						$("#com2_d").html(result.result[1].companyname);
+						$("#com2_d").html(result.result[1].merchantname);
 						$("#tel2_d").html(result.result[1].tel);
 
 						$("#link3_d").attr("href", result.result[2].url);
 						$("#url3_d").attr("href", result.result[2].url);
 						$("#img3_d").attr("src", pic_path + result.result[2].image);
-						$("#com3_d").html(result.result[2].companyname);
+						$("#com3_d").html(result.result[2].merchantname);
 						$("#tel3_d").html(result.result[2].tel);
 
 						$("#link4_d").attr("href", result.result[3].url);
 						$("#url4_d").attr("href", result.result[3].url);
 						$("#img4_d").attr("src", pic_path + result.result[3].image);
-						$("#com4_d").html(result.result[3].companyname);
+						$("#com4_d").html(result.result[3].merchantname);
 						$("#tel4_d").html(result.result[3].tel);
 
 					} else {
@@ -475,6 +477,7 @@
 				success: function(result) {
 					if(result.code == 200) {
 						$("#cimg1").attr("src", pic_path + result.result[0].image);
+						$("#curl1").attr('href', result.result[0].url);
 						$("#cad1").html(result.result[0].policy);
 					} else {
 						$.messager.alert('ERROR', result.message);
@@ -496,7 +499,7 @@
 				success: function(result) {
 					if(result.code == 200) {
 						$("#cimg2").attr("src", pic_path + result.result[0].image);
-
+						$("#curl2").attr('href', result.result[0].url);
 						$("#cad2").html(result.result[0].policy);
 
 					} else {
@@ -521,7 +524,7 @@
 					if(result.code == 200) {
 
 						$("#cimg3").attr("src", pic_path + result.result[0].image);
-
+						$("#curl3").attr('href', result.result[0].url);
 						$("#cad3").html(result.result[0].policy);
 
 					} else {
@@ -546,7 +549,7 @@
 					if(result.code == 200) {
 
 						$("#cimg4").attr("src", pic_path + result.result[0].image);
-
+						$("#curl4").attr('href', result.result[0].url);
 						$("#cad4").html(result.result[0].policy);
 
 					} else {

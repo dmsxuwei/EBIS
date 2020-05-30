@@ -81,6 +81,7 @@ public class CommunityController extends BaseController {
 	public ResultBody addMerchant(@RequestParam("file") MultipartFile file,
 			@RequestParam(name = "companyid", required = false)String companyid,
 			@RequestParam(name = "type", required = true) String type,
+			@RequestParam(name = "url", required = true) String url,
 			@RequestParam(name = "policy", required = false) String policy,
 			@RequestParam(name = "rank", required = false) @Size(max = 200) String rank) throws Exception {
 
@@ -95,7 +96,7 @@ public class CommunityController extends BaseController {
 		if (companyid != null && !"".equals(companyid))community.setCompanyid(companyid);
 		
 		community.setType(type);
-		
+		community.setUrl(url);
 		if (rank == null || "".equals(rank)) {
 			community.setRank(0);
 		} else {

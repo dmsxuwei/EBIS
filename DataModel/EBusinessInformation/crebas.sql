@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/5/17 0:06:44                            */
+/* Created on:     2020/5/29 13:31:35                           */
 /*==============================================================*/
 
 
@@ -61,6 +61,7 @@ create table a_user
    email                varchar(50),
    QQ                   varchar(15),
    wechat               varchar(15),
+   createtime           datetime not null,
    primary key (userid)
 );
 
@@ -93,6 +94,7 @@ create table advertising
    policy               varchar(255),
    culture              varchar(255),
    price                varchar(255),
+   url                  varchar(255),
    primary key (advertisingid)
 );
 
@@ -109,6 +111,8 @@ create table community
    policy               varchar(255),
    rank                 int default 0,
    createtime           datetime,
+   type                 varchar(20) comment '淘宝，京东',
+   url                  varchar(255),
    primary key (communityid)
 );
 
@@ -147,11 +151,13 @@ alter table merchant comment '商家信息表';
 create table monitor
 (
    monitorid            varchar(32) not null,
-   userid               varchar(50),
    eventtype            varchar(10),
-   ipadress             varchar(32),
    isregister           varchar(10),
+   userid               varchar(50),
+   ipadress             varchar(32),
    eventtime            datetime,
+   advertisingid        varchar(32),
+   merchantid           varchar(32),
    primary key (monitorid)
 );
 

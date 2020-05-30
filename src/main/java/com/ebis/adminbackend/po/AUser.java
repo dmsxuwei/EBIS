@@ -1,5 +1,7 @@
 package com.ebis.adminbackend.po;
 
+import java.util.Date;
+
 public class AUser {
     private String userid;
 
@@ -18,6 +20,8 @@ public class AUser {
     private String qq;
 
     private String wechat;
+
+    private Date createtime;
 
     public String getUserid() {
         return userid;
@@ -89,5 +93,13 @@ public class AUser {
 
     public void setWechat(String wechat) {
         this.wechat = wechat == null ? null : wechat.trim();
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 }
